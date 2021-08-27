@@ -1,0 +1,213 @@
+﻿
+@{
+    ViewBag.Title = "detail";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<style>
+    .fotorama__stage__shaft, .fotorama__thumb {
+        padding: 9px;
+        border: 1px solid #aecc9a;
+    }
+
+    #pills-tabContent p a {
+    }
+</style>
+
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 my-4 text-uppercase font13 cl_nau" id="breadcrumbs"><span><span><a href="/Client/Index">Trang chủ</a> <i class="fa fa-angle-right"></i> <span class="breadcrumb_last" aria-current="page">@ViewBag.productFind.title</span></span></span></div>
+            <div class="clearfix"></div>
+            <div class="col-sm-9 a_cl_xanh" id="left-panel">
+                <div class="w100"><h1 class="tit-h1 tit-border-b3 pull-left marb20 padb20 font30 UTMHelvetIns cl_nau">@ViewBag.productFind.title</h1></div>
+                <div class="row" id="info-cay">
+                    <div class="col col-md-6">
+                        <div id="gallery">
+                            <div class="fotorama text-center" data-arrows="false" data-width="100%" data-nav="thumbs" data-navposition="bottom" data-fit="cover" data-autoplay="true" data-thumbmargin="10" data-thumbwidth="70" data-thumbheight="70" data-allowfullscreen="native">
+                                <img src="~/UploadFile/productImage/@ViewBag.productFind.avatar" data-full="~/UploadFile/productImage/@ViewBag.productFind.avatar">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col col-md-6">
+                        <div class="my-3 w100 text-capitalize">
+                            @if (@ViewBag.productFind.quantity > 0)
+                            {
+                                <span class="float-left">Tình trạng: Còn hàng</span>
+                            }
+                            else
+                            { 
+                                <span class="float-left">Tình trạng: Hết hàng</span>
+
+                            }
+                        <span class="float-right">MSP: @ViewBag.productFind.id</span>
+                        </div>
+                        <div class="font18 w100 mb-2 text-left">Mô tả ngắn</div>
+                        <div class="text-justify" style="line-height: 24px;">@ViewBag.productFind.short_description</div>
+                        <div id="gia-cay" class="w100 mt-5 mb-3">
+                            <span class="gia-cay col-6 cl_red UTMHelvetIns font24 float-left">249,000đ</span>
+                            <div class="float-right col-6 ">
+                                <div class="input-group">
+                                    <div class="input-group-prepend"><span class="input-group-text">Số lượng</span></div>
+                                    <input type="number" name="qty" id="qty13006" value="1" size="1" min="1" class="form-control">
+                                </div>
+                            </div>
+                        </div>
+
+                        <p class="text-danger h3"><p><strong>Giá chưa gồm chậu sứ hoặc bình thủy tinh</strong></p>
+                        <p>Xem ảnh add zalo HN <a class="text-is-phone-number">0988833653</a><span class="text">, HCM </span><a class="text-is-phone-number">0909285658 </a></p>
+                        </p>
+
+                        <div class="d-flex justify-content-around single-cay-btn py-4">
+                            <button onclick="addCart(13006)" class="btn btn-success" id="btn-add-cart">
+                                <i class="fa fa-shopping-cart cl_white"></i><span>CHO CÂY VÀO GIỎ</span>
+                            </button>
+                            <a class="btn btn-danger" href="/thanh-toan" rel="nofollow"><i class="fa fa-credit-card-alt"></i><span>THANH TOÁN</span></a>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
+
+                    <div class="col">
+                        <ul class="nav nav-pills text-uppercase transition" id="pills-tab" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" id="pills-des-tab" data-toggle="pill" href="#pills-des" role="tab" aria-controls="pills-des" aria-selected="true">Mô tả sản phẩm</a>
+                            </li>
+                        </ul>
+
+
+
+                        <div class="tab-content" id="pills-tabContent">
+                            <div class="tab-pane fade show active" id="pills-des" role="tabpanel" aria-labelledby="pills-des-tab">
+                                <div id="contentsp">
+                                    <p>@ViewBag.productFind.detail_description</p>
+                                    <div id="toc_container" class="no_bullets"><p class="toc_title">Mục Lục</p><ul class="toc_list"><li><a href="#Dac_diem_cay_Mini_Monstera"><span class="toc_number toc_depth_1">1</span> Đặc điểm cây Mini Monstera</a></li><li><a href="#Tac_dung_cay_Mini_Monstera"><span class="toc_number toc_depth_1">2</span> Tác dụng cây Mini Monstera</a></li><li><a href="#Cach_cham_soc_cay_Mini_Monstera"><span class="toc_number toc_depth_1">3</span> Cách chăm sóc cây Mini Monstera</a><ul><li><a href="#Nhiet_do"><span class="toc_number toc_depth_2">3.1</span> Nhiệt độ</a></li><li><a href="#Nuoc_do_am"><span class="toc_number toc_depth_2">3.2</span> Nước, độ ẩm</a></li><li><a href="#Dat"><span class="toc_number toc_depth_2">3.3</span> Đất</a></li><li><a href="#Phan_Bon"><span class="toc_number toc_depth_2">3.4</span> Phân Bón</a></li><li><a href="#Nhan_giong"><span class="toc_number toc_depth_2">3.5</span> Nhân giống</a></li></ul></li></ul></div>
+                                    <h2><span id="Dac_diem_cay_Mini_Monstera">Đặc điểm cây Mini Monstera</span></h2>
+                                    <p><strong>Tên thường gọi</strong>: @ViewBag.productFind.title</p>
+                                    <p><strong>Tên khoa học</strong>: @ViewBag.productFind.title</p>
+                                    <p><strong>Bộ (ordo)</strong>: Alismatales</p>
+                                    <p><strong>Họ (familia)</strong>: Araceae (Họ ráy có hoa)</p>
+                                    <p><strong>Chi (genus)</strong>: Rhaphidophora</p>
+                                    <p><strong>Loài (species)</strong>: R. tetrasperma</p>
+                                    <p><strong>Nguồn gốc</strong>: Thái Lan và Malaysia</p>
+                                    <p>@ViewBag.productFind.title có rất nhiều tên gọi như: @ViewBag.productFind.title, ginny philodendron, mini-leaf philodendron, Trầu Bà Lá Xẻ Form nhỏ, Trầu Bà Nam Mỹ bé.</p>
+                                    <p>Mặc dù &#8220;<a href="#"><em><strong>@ViewBag.productFind.title</strong></em></a>&#8221; là một biệt danh hoàn toàn đáng yêu, nhưng tất cả những cái tên đều không phải. Tetrasperma không phải là Monstera hay Philodendron. Tuy nhiên, nó là một thành viên của cùng một họ, Araceae, thường được gọi là “aroids”.</p>
+                                    <p style="text-align: center;"><a href="#"><img loading="lazy" width="318" height="400" class="alignnone size-medium wp-image-13009" src="~/UploadFile/productImage/@ViewBag.productFind.avatar" alt="cây mini monstera leo" srcset="~/UploadFile/productImage/@ViewBag.productFind.avatar 318w, ~/UploadFile/productImage/@ViewBag.productFind.avatar 500w" sizes="(max-width: 318px) 100vw, 318px" /></a></p>
+                                    <p style="text-align: center;"><em>Cây @ViewBag.productFind.title có thể leo và bám</em></p>
+                                    <p>Nhìn bao quát thì lá có hình trái tim với các vết xẻ trên lá so le với nhau, cây thuộc dạng dễ khí ở trên mỗi đốt cây sẽ mọc thêm rễ để có thể bám.</p>
+                                    <p>Cây thuộc họ Ráy nên cũng có đơm hoa và kết quả, quả của cây giống như ngón tay.</p>
+                                    <h2><span id="Tac_dung_cay_Mini_Monstera">Tác dụng cây @ViewBag.productFind.title</span></h2>
+                                    <ul>
+                                        <li><strong>Lọc khí</strong>: Dòng họ ráy nói chung và Mini Monstera nói riêng đều có khả năng lọc khí rất tốt, hấp thụ những chất có thể gây hại ở thể hơi như formaldehydes và các chất hóa học ở thể hơi.</li>
+                                        <li><strong>Trang trí</strong>: Khác với đa phần loại cây cảnh khác thì @ViewBag.productFind.title có thể leo và tạo ra được những mảnh xanh ấn tượng và diện tích chậu trồng không cần lớn.</li>
+                                    </ul>
+                                    <h2><span id="Cach_cham_soc_cay_Mini_Monstera">Cách chăm sóc cây @ViewBag.productFind.title</span></h2>
+                                    <p>Vì có rễ khí ở mỗi đốt cây nên cây cực kỳ dễ chăm sóc và nhân giống. Nguồn gốc của @ViewBag.productFind.title là được phát hiện mọc ở trên thân cây to, nên cây thích điều kiện mát và ẩm.</p>
+                                    <h3><span id="Nhiet_do">Nhiệt độ</span></h3>
+                                    <p>Vì mọc ở dưới các tán cây, nên nhiệt độ tối ưu cũng mát hơn một số <a href="https://webcaycanh.com/cay-canh-trong-nha/">cây trồng trong nhà</a> khác là từ 16 &#8211; 25 độ C.</p>
+                                    <p>Nếu nhiệt độ dưới 5 độ C và trên 40 độ C cây dễ bị cháy lá và ngưng phát triển.</p>
+                                    <h3><span id="Nuoc_do_am">Nước, độ ẩm</span></h3>
+                                    <p>Nước tưới và độ ẩm là một phần khác quan trọng đối với cây, thuộc dòng ưa ẩm <strong>@ViewBag.productFind.title</strong> luôn thích đất có chút nước nhưng không sũng quá, mặt đất khô khoảng 2 cm tính từ trên mặt xuống thì ta mới lên tưới thêm.</p>
+                                    <p>Độ ẩm trong không khí tối ưu với cây là từ 60 &#8211; 80%. Nếu không khí khô thì bạn nên mua thêm máy tạo độ ẩm</p>
+                                    <p><strong>Lưu ý</strong>: Vì cây ưa nước nên nhiều người tưới có quá nhiều dẫn đến tình trạng cây bị sũng nước, vi khuẩn phát triển dẫn đến hỏng thân và lá, nên bạn cần cung cấp 1 lượng vừa phải vì cây cũng có khả năng chị hạn rất tốt.</p>
+                                    <p><strong>Ánh sáng</strong></p>
+                                    <p>Ánh sáng ưa thích là ánh sáng tán sắc hoặc ánh sáng một phần và buổi sáng hoặc buổi chiều mát.</p>
+                                    <p>Tránh để cây bị ánh sáng trực tiếp vào trời hè nắng gắt, cây dễ bị cháy lá.</p>
+                                    <h3><span id="Dat">Đất</span></h3>
+                                    <p>Đất trồng nên có nhiều mùn và thoát nước tốt không để nước ứa đọng nhiều trong giá thể.</p>
+                                    <p>Bạn có thể trộn đất thịt với tro trấu, sơ dừa và tăng độ thoáng, thoát nước cho cây bằng cách trộn thêm xỉ than, đá perlife&#8230;</p>
+                                    <h3><span id="Phan_Bon">Phân Bón</span></h3>
+                                    <p>Vào mùa bạn thấy cây phát triển lá mạnh đẻ nhiều lá mới, thì 2 -3 tháng nên bón thêm cho cây một lần.</p>
+                                    <p>Nên bón những loại phân an toàn để tránh cây bị sốc dinh dưỡng hoặc bị cạn kiệt dinh dưỡng trong đất.</p>
+                                    <h3><span id="Nhan_giong">Nhân giống</span></h3>
+                                    <p>Cây có thể nhân giống bằng hạt, cắt cành giâm là phương pháp phổ biến đạt hiệu quả nhanh.</p>
+                                    <p>&nbsp;</p>
+                                </div>
+
+
+                                <div class=" d-flex mt-2">
+                                    <div class="fb-like" data-href="#" data-width="" data-layout="button_count" data-action="like" data-size="small" data-share="true"></div>
+                                </div>
+
+
+
+
+                                <div class="w100">
+                                    <div class="tit-box cl_xanh6 text-center mt-3">
+                                        sản phẩm liên quan
+                                    </div>
+                                    <div class=" owl-carousel owl-theme owl-3-items">
+                                        @foreach (var item in ViewBag.productTop8)
+                                        {
+                                            <div class="wrap-item-loop-sp bg_white ">
+                                                <div class="item-loop-sp mb-4">
+                                                    <div class="img1 photo overhiden marb10 ">
+                                                        <a href="#" title="@item.title">
+                                                            <img src="~/UploadFile/productImage/@item.avatar" class="w100 transition wp-post-image" alt="" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 83w" sizes="(max-width: 255px) 100vw, 255px" />
+                                                        </a>
+                                                    </div>
+                                                    <div class="transition w100 wr1 text-center ">
+                                                        <a href="#" title="@item.title"><h3 class="clear tit-loop-sp">@item.title</h3></a>
+                                                        <span class="price font18 text-danger">@item.price <ins>₫</ins></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        }
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="col-sm-3" id="sidebar">
+                <div id="nav_menu-3" class="widget_nav_menu sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
+    @foreach (var item in ViewBag.categories)
+    {
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="https://webcaycanh.com/cay-canh-phong-thuy/">@item.name</a></li>
+    }
+
+</ul>
+                </div><div id="custom_html-3" class="widget_text widget_custom_html sidebar-widget mb-4"><div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Công Ty Web Cây Cảnh</div><div class="textwidget custom-html-widget"><a href="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg"><img class="alignnone size-full wp-image-9294" src="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg" alt="cty-cay-canh" /></a></div></div><div id="id_post_by_tax-2" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
+    @foreach (var item in ViewBag.productTop8)
+    {
+        <a class="mb-4 w100" href="https://webcaycanh.com/cay-mini-monstera/" title="@item.title">
+            <div class="col-4 no-padding float-left">
+                <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
+            </div>
+            <div class="col-8 no-padding pl-2 float-left">
+                <h4 class="font14 bold" style="line-height: 22px;">@item.title</h4>
+                <span class="price font18 text-danger w100">@item.price <ins>₫</ins></span>
+            </div>
+        </a>
+    }
+
+
+</div>
+                </div><div id="id_post_by_tax-3" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
+    @foreach (var item in ViewBag.productTop8)
+    {
+        <a class="mb-4 w100" href="https://webcaycanh.com/cay-monstera/" title="@item.title">
+            <div class="col-4 no-padding float-left">
+                <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
+            </div>
+            <div class="col-8 no-padding pl-2 float-left">
+                <h4 class="font14 bold" style="line-height: 22px;">Cây Monstera</h4>
+                <span class="price font18 text-danger w100">310.000 <ins>₫</ins></span>
+            </div>
+        </a>
+    }
+
+</div>
+                </div>
+            </div> <!-- /#sidebar -->
+        </div>
+    </div>
+</section>
+

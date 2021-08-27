@@ -1,0 +1,83 @@
+﻿
+@{
+    ViewBag.Title = "EditNew";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">Cập nhật danh mục</div>
+                        <div class="card-body">
+                            <div class="card-title">
+
+
+                                <h3 class="text-center title-2"></h3>
+
+
+                            </div>
+                            <hr />
+                            <form action="/tbl_category/Update?id=@ViewBag.category.id" enctype="multipart/form-data" method="post" novalidate="novalidate" onsubmit="return validateForm()">
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Tên danh mục:</label>
+                                    <input id="nameCate"
+                                           name="name"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.category.name" required />
+                                </div>
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Mô tả</label>
+                                    <textarea id="summernote" name="description">@ViewBag.category.description</textarea>
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+                                <<div class="form-control has-success">
+                                    <label for="cc-name" class="control-label mb-1"></label>
+                                    <img id="output" class="img-rounded" alt="" width="180" height="200" src="~/UploadFile/categoryImage/@ViewBag.category.avatar" />
+                                    <p><label for="ufile" style="cursor:pointer">chọn file ảnh</label></p>
+                                    <input name="ImageFile" id="ufile" type="file" style="display:none" onchange="loadFile(event)" />
+                                    <input type="hidden" name="OldImageFile" value="@ViewBag.category.avatar" />
+                                </div>
+                                <div>
+                                    <button id="payment-button"
+                                            onclick="validateCate();"
+                                            type="submit"
+                                            class="btn btn-lg btn-info btn-block">
+                                        <span id="payment-button-amount">Submit</span>
+                                        <span id="payment-button-sending"
+                                              style="display: none">Sending…</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>
+                            Copyright © 2018 Colorlib. All rights reserved. Template
+                            by <a href="https://colorlib.com">Colorlib</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>

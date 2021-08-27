@@ -1,0 +1,88 @@
+﻿@model group19Web.Models.tbl_category
+
+@{
+    ViewBag.Title = "CreateNew";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">Danh mục mơi</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                @if (ViewBag.error != null)
+                                {
+                                <h3 class="text-center title-2">@ViewBag.error</h3>
+                                }
+                                    
+                            </div>
+                            <hr />
+                            <form action="/tbl_category/Create" enctype="multipart/form-data" method="post" novalidate="novalidate" onsubmit="return validateForm()">
+                                @Html.AntiForgeryToken()
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Tên danh muc:</label>
+                                    <input id="nameCate"
+                                           name="name"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           placeholder="cây trong nhà" required />
+                                </div>
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Mô tả:</label>
+                                    <textarea id="summernote" name="description">minh sama</textarea>
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-control has-success">
+                                    <label for="cc-name" class="control-label mb-1"></label>
+                                    <img id="output" class="img-rounded" alt="" width="180" height="200" src="~/UploadFile/categoryImage/" />
+                                    <p><label for="ufile" style="cursor:pointer">chọn file ảnh</label></p>
+                                    <input name="ImageFile" id="ufile" type="file" style="display:none" onchange="loadFile(event)" />
+                                </div>
+
+                                <div>
+                                    <button id="payment-button"
+                                            onclick="validateCate();"
+                                            type="submit"
+                                            class="btn btn-lg btn-info btn-block">
+                                        <span id="payment-button-amount">Submit</span>
+                                        <span id="payment-button-sending"
+                                              style="display: none">Sending…</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>
+                            Copyright © 2018 Colorlib. All rights reserved. Template
+                            by <a href="https://colorlib.com">Colorlib</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+</script>
+
+
+

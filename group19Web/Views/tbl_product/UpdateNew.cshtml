@@ -1,0 +1,183 @@
+﻿
+@{
+    ViewBag.Title = "UpdateNew";
+    Layout = "~/Views/Shared/_LayoutMain.cshtml";
+}
+
+
+<div class="main-content">
+    <div class="section__content section__content--p30">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="card">
+                        <div class="card-header">New product</div>
+                        <div class="card-body">
+                            <div class="card-title">
+                                <h3 class="text-center title-2"></h3>
+                            </div>
+                            <hr />
+                            <form action="/tbl_product/Update?id=@ViewBag.product.id" id="form" method="post" enctype="multipart/form-data" novalidate="novalidate" onsubmit="return validateFormProduct()">
+                                <div class="form-group">
+                                    <label class="control-label mb-1">Category: </label>
+                                    <div class="col-sm-5">
+                                        <input type="hidden" id="hidText" name="hidText" />
+                                        <select id="selectCate" name="selectCate">
+                                            @foreach (var item in ViewBag.categories)
+                                            {
+                                                <option value="@ViewBag.product.category_id">@item.name</option>
+                                            }
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="cc-payment" class="control-label mb-1">Product name:</label>
+                                    <input id="title"
+                                           name="title"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.title" />
+                                </div>
+
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Price</label>
+                                    <input id="price"
+                                           name="price"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.price"
+                                           pattern="[0-9]"
+                                           title="chỉ được ghi sô" />
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Price sale</label>
+                                    <input id="priceSale"
+                                           name="priceSale"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.price_sale"
+                                           pattern="[0-9]"
+                                           title="chỉ được ghi số" />
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Số lượng</label>
+                                    <input id="quantity"
+                                           name="quantity"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.quantity"
+                                           pattern="[0-9]"
+                                           title="chỉ được ghi sô" />
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Short_Description</label>
+                                    <input id="shortDescription"
+                                           name="shortDescription"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.short_description" />
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="form-group has-success">
+                                    <label for="cc-name" class="control-label mb-1">Detail_Description</label>
+                                    <input id="detailDescription"
+                                           name="detailDescription"
+                                           type="text"
+                                           class="form-control"
+                                           aria-required="true"
+                                           aria-invalid="false"
+                                           value="@ViewBag.product.detail_description" />
+                                    <span class="help-block field-validation-valid"
+                                          data-valmsg-for="cc-name"
+                                          data-valmsg-replace="true"></span>
+                                </div>
+
+                                <div class="form-control has-success">
+                                    <label for="cc-name" class="control-label mb-1"></label>
+                                    <img id="output" class="img-rounded" alt="" width="180" height="200" src="~/UploadFile/productImage/@ViewBag.product.avatar" />
+                                    <p><label for="ufile" style="cursor:pointer">chọn file ảnh</label></p>
+                                    <input name="ImageFile" id="ufile" type="file" style="display:none" onchange="loadFile(event)" />
+                                    <input type="hidden" name="OldImageFile" value="@ViewBag.product.avatar" />
+                                </div>
+
+                                <div>
+                                    <button id="payment-button"
+                                            type="submit"
+                                            class="btn btn-lg btn-info btn-block">
+                                        <span id="payment-button-amount">Submit</span>
+                                        <span id="payment-button-sending"
+                                              style="display: none">Sending…</span>
+                                    </button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>
+                            Copyright © 2018 Colorlib. All rights reserved. Template
+                            by <a href="https://colorlib.com">Colorlib</a>.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    var loadFile = function (event) {
+        var image = document.getElementById("output");
+        image.src = URL.createObjectURL(event.target.files[0]);
+    }
+
+    function validateFormProduct() {
+        var numbers = /\d+/g;
+        var title = document.getElementById("title").value;
+        var price = document.getElementById("price").value;
+        var priceSale = document.getElementById("priceSale").value;
+        var shortDescription = document.getElementById("shortDescription").value;
+        if (title == "" || price == "" || priceSale == "" || shortDescription == "" ||
+            !price.match(numbers) ||
+            !priceSale.match(numbers) ||
+            !quantity.match(numbers)) {
+            alert("du lieu khong hop le");
+        } else {
+            return true;
+        }
+        return false;
+    }
+        $(function() {
+            $("form").submit(function () {
+                var selTypeText = $("#selectCate option:selected").text();
+                $("#hidText").val(selTypeText);
+            });
+    });
+</script>
+

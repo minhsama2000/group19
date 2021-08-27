@@ -1,0 +1,253 @@
+﻿@model PagedList.IPagedList<group19Web.Models.tbl_product>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+@{
+    ViewBag.Title = "DetailCategory";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+<section class="">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-9 a_cl_xanh" id="left-panel">
+                <div class="row">
+                    <div class="col-12 py-3 tax_des">
+                        <h2 style="text-align: center">
+                            Các loại @ViewBag.category.name theo tuổi, theo mệnh
+                        </h2>
+                    </div>
+                    @foreach (var item in Model)
+                    {
+                        <div class="col-12 col-md-4 item-loop-tour">
+                            <div class="wrap-item-loop-sp bg_white">
+                                <div class="item-loop-sp mb-4">
+                                    <div class="img1 photo overhiden marb10 relative">
+                                        <a href="/Client/detail?id=@item.id"
+                                           title="Cây Mini Monstera">
+                                            <img src="~/UploadFile/productImage/@item.avatar"
+                                                 class="w100 transition wp-post-image"
+                                                 alt="cây mini monstera"
+                                                 loading="lazy"
+                                                 srcset="
+                      ~/UploadFile/productImage/@item.avatar 255w,
+                      ~/UploadFile/productImage/@item.avatar 400w,
+                      ~/UploadFile/productImage/@item.avatar 150w,
+                      ~/UploadFile/productImage/@item.avatar 768w,
+                      ~/UploadFile/productImage/@item.avatar  83w,
+                      ~/UploadFile/productImage/@item.avatar 800w
+                    "
+                                                 sizes="(max-width: 255px) 100vw, 255px" />
+                                        </a>
+                                        <div class="
+                    btn-cart-loop-cay
+                        d-none
+                    transition
+                        w100
+                        text-center
+                  ">
+                                            <button onclick="addCart(13006)"
+                                                    class="btn btn-success">
+                                                <i class="fa fa-shopping-cart cl_white"></i><span>CHO CÂY VÀO GIỎ</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <div class="transition w100 wr1 text-center">
+                                        <a href="/Client/detail?id=@item.id"
+                                           title="@item.title">
+                                            <h3 class="clear tit-loop-sp">
+                                                @item.title
+                                            </h3>
+                                        </a>
+                                        <span class="price font18 text-danger">@item.price <ins>₫</ins></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+
+                    <!-- pagination -->
+                    <div class="pagi_box col-12 float-right text-center">
+                        Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount
+                        @Html.PagedListPager(Model, page => Url.Action("Index", new
+                        {
+                            page
+                }))
+                    </div>
+                    <!-- /pagination -->
+                    <div class="col-12 py-3 tax_des">
+                        <p><strong>3 loại @ViewBag.category.name:</strong></p>
+                        <p>
+                            Cây cảnh được mua với nhiều mục đích khác nhau về cơ bản là
+                            để trang trí không gian, tốt cho sức khỏe hoặc vì nó mang ý
+                            nghĩa phong thủy tốt cho người mua. Hoặc mua vì tất cả lý do
+                            trên. Trong bài viết này thì chúng ta cùng tìm hiểu sâu về
+                            phần phong thủy, để chúng ta có thêm cái nhìn tổng quan, và
+                            bạn có thể tự chọn cây phong thủy phù hợp với mình.
+                        </p>
+                        <h2 id="tuoi">1. @ViewBag.category.name theo tuổi</h2>
+                        <p>
+                            @ViewBag.category.name theo tuổi sẽ được chia theo 12 con giáp, vì
+                            mỗi con giáp có những đặc tính đặc trưng, chính vì điều đó
+                            12 con giáp sẽ tương ứng với 12 loại
+                            <strong>cây phong thủy</strong> khác nhau, giúp tăng tài vận
+                            và may mắn.
+                        </p>
+                        <h3>
+                            <strong>
+                                1.1 Cây vượng tài cho người tuổi Tý:
+                                <a href="#">Cây Kim Tiền</a>
+                            </strong>
+                        </h3>
+                        <p>
+                            Người tuổi Tý không phải là người quản lý tài sản tốt lắm.
+                            Tuy rất chú trọng tích góp tiền của, nhưng lại không biết
+                            đầu tư, nắm bắt được cơ hội kiếm tiền.
+                        </p>
+                        <p style="text-align: center">
+                            <img loading="lazy"
+                                 class="alignnone wp-image-5740 size-medium"
+                                 src="~/UploadFile/categoryImage/@ViewBag.category.avatar"
+                                 alt="cay-kim-tien-de-ban"
+                                 width="400"
+                                 height="400"
+                                 srcset="
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 400w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 150w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 768w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 255w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar    83w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 300w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar         900w
+                      "
+                                 sizes="(max-width: 400px) 100vw, 400px" />
+                        </p>
+                        <p style="text-align: center"><em>Cây Kim Tiền</em></p>
+                        <p>
+                            Người cầm tinh con chuột có thể đặt một chậu cây kim tiền
+                            trong nhà để làm tăng vận may, giúp bạn dám mạo hiểm hơn,
+                            dám đối mặt với thách thức để nắm lấy cơ hội phát tài.
+                        </p>
+                        <h3>
+                            <strong>
+                                1.2 Cây vượng tài cho người tuổi Sửu: Cây Dứa Cảnh
+                                Nến
+                            </strong>
+                        </h3>
+                        <p>
+                            Tuổi Sửu là tuổi chịu được vất vả, làm việc theo hướng thực
+                            tế, là người trung thực nhưng tương đối bảo thủ, mỗi ngày
+                            làm việc chỉ kiếm được một ít tiền.
+                        </p>
+                        <p style="text-align: center">
+                            <img loading="lazy"
+                                 class="alignnone wp-image-5528 size-medium"
+                                 src="~/UploadFile/categoryImage/@ViewBag.category.avatar"
+                                 alt="cay-dua-nen-do"
+                                 width="293"
+                                 height="400"
+                                 srcset="
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 293w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 220w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar         528w
+                      "
+                                 sizes="(max-width: 293px) 100vw, 293px" />
+                        </p>
+                        <p style="text-align: center"><em>Cây Dứa Nến Cảnh</em></p>
+                        <p>
+                            Những người tuổi này nên đặt chậu dứa cảnh nến ở bên trái
+                            bàn làm việc để trợ giúp bạn kiếm được nhiều tiền hơn, mà
+                            bạn cũng sẽ cảm thấy thoải mái hơn.
+                        </p>
+                        <h3>
+                            <strong>
+                                1.3 Cây vượng tài cho người tuổi Dần:
+                                <a href="https://webcaycanh.com/cay-ngu-gia-bi/">Cây Ngũ Gia Bì</a>
+                            </strong>
+                        </h3>
+                        <p>
+                            Người tuổi Dần có can đảm, dám mạo hiểm, có bản lĩnh kiếm
+                            tiền, nhưng lại không quá coi trọng tiền bạc, chẳng qua là
+                            bạn thích hưởng thụ quá trình kiếm tiền, hơn nữa nhiều khi
+                            vì quá nôn nóng mà tiến vào con đường mạo hiểm khiến tiêu
+                            tan hết tiền tài.
+                        </p>
+                        <p style="text-align: center">
+                            <img loading="lazy"
+                                 class="alignnone wp-image-6380 size-medium"
+                                 src="~/UploadFile/categoryImage/@ViewBag.category.avatar"
+                                 alt="cay-ngu-gia-bi-dep"
+                                 width="400"
+                                 height="400"
+                                 srcset="
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 400w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 150w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 768w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar 255w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar    83w,
+                        ~/UploadFile/categoryImage/@ViewBag.category.avatar        900w
+                      "
+                                 sizes="(max-width: 400px) 100vw, 400px" />
+                        </p>
+                        
+                    </div>
+
+                    <div class="col-12">
+                        <div class="d-flex mt-2">
+                            <div class="fb-like"
+                                 data-href=""
+                                 data-width=""
+                                 data-layout="button_count"
+                                 data-action="like"
+                                 data-size="small"
+                                 data-share="true"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- sidebar -->
+            <div class="col-sm-3" id="sidebar">
+                <div id="nav_menu-3" class="widget_nav_menu sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
+                        @foreach (var item in ViewBag.categories)
+                        {
+                            <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="https://webcaycanh.com/cay-canh-phong-thuy/">@item.name</a></li>
+                        }
+
+                    </ul>
+                </div><div id="custom_html-3" class="widget_text widget_custom_html sidebar-widget mb-4"><div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Công Ty Web Cây Cảnh</div><div class="textwidget custom-html-widget"><a href="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg"><img class="alignnone size-full wp-image-9294" src="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg" alt="cty-cay-canh" /></a></div></div><div id="id_post_by_tax-2" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
+                        @foreach (var item in ViewBag.productTop8)
+                        {
+                            <a class="mb-4 w100" href="https://webcaycanh.com/cay-mini-monstera/" title="@item.title">
+                                <div class="col-4 no-padding float-left">
+                                    <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
+                                </div>
+                                <div class="col-8 no-padding pl-2 float-left">
+                                    <h4 class="font14 bold" style="line-height: 22px;">@item.title</h4>
+                                    <span class="price font18 text-danger w100">@item.price <ins>₫</ins></span>
+                                </div>
+                            </a>
+                        }
+
+
+                    </div>
+                </div><div id="id_post_by_tax-3" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                    <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
+                        @foreach (var item in ViewBag.productTop8)
+                        {
+                            <a class="mb-4 w100" href="https://webcaycanh.com/cay-monstera/" title="@item.title">
+                                <div class="col-4 no-padding float-left">
+                                    <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
+                                </div>
+                                <div class="col-8 no-padding pl-2 float-left">
+                                    <h4 class="font14 bold" style="line-height: 22px;">Cây Monstera</h4>
+                                    <span class="price font18 text-danger w100">310.000 <ins>₫</ins></span>
+                                </div>
+                            </a>
+                        }
+
+                    </div>
+                </div>
+            </div> <!-- /#sidebar -->
+        </div>
+    </div>
+</section>
