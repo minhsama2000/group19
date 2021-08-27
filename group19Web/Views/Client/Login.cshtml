@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = "Login";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    var user = Session["user"] as group19Web.Models.tbl_user;
+    string username = "";
+    string password = "";
+    if (user != null)
+    {
+        username = user.username;
+        password = user.password;
+    }
 }
 
 <link href="https://fonts.googleapis.com/css?family=Roboto:300,400&display=swap" rel="stylesheet">
@@ -28,15 +36,24 @@
                             <div class="mb-4">
                                 <h3>Đăng nhập <strong>WebCayCanh</strong></h3>
                             </div>
-                            <form action="#" method="post">
+                            @if (ViewBag.error != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <p class="mb-4" role="alert">
+                                        @ViewBag.error
+                                    </p>
+                                </div>
+                                
+                            }
+                            <form action="/Client/UserLogin" method="post" onsubmit="return validateLogin()">
                                 <div class="form-group first">
                                     <label for="username">Tài khoản</label>
-                                    <input type="text" class="form-control" id="username">
+                                    <input type="text" class="form-control" value="@username" name="username" id="username">
 
                                 </div>
                                 <div class="form-group last mb-4">
                                     <label for="password">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password">
+                                    <input type="password" class="form-control" value="@password" name="password" id="password">
 
                                 </div>
 

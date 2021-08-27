@@ -7,6 +7,7 @@ using group19Web.DAO;
 using System.Data;
 using PagedList;
 using group19Web.Models;
+using System.Web;
 
 namespace group19Web.Controllers
 {
@@ -14,6 +15,7 @@ namespace group19Web.Controllers
     {
         CategoryDAO CategoryDAO = new CategoryDAO();
         ProductDAO ProductDAO = new ProductDAO();
+        UserDAO UserDAO = new UserDAO();
         private CayCanhDB db = new CayCanhDB();
         // GET: Client
         public ActionResult Index()
@@ -104,6 +106,132 @@ namespace group19Web.Controllers
 
             return View(products.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult UserLogin()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            tbl_user user = UserDAO.findByName(username);
+
+            try
+            {
+                if (user != null)
+                {
+                    if (user.password.Equals(password))
+                    {
+                        Session["user"] = user;
+                        return RedirectToAction("Index");
+                    }              
+                }
+                TempData["error"] = "tài khoản hoặc mật khẩu không đúng";
+                return RedirectToAction("Login");
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("Login");
+            }   
+        }
+
+        public ActionResult UserRegister()
+        {
+            string username = Request["username"];
+            string password = Request["password"];
+            string email = Request["email"];
+            string address = Request["address"];
+            string phone = Request["phone"];
+            tbl_user tbl_User = null;
+
+            try
+            {
+                if(UserDAO.findByName(username) == null)
+                {
+                    if(UserDAO.findByEmail(email) == null)
+                    {
+                        tbl_User = new tbl_user();
+                        tbl_User.username = username;
+                        tbl_User.password = password;
+                        tbl_User.role = "user";
+                        tbl_User.email = email;
+                        tbl_User.created_date = DateTime.UtcNow.Date;
+                        tbl_User.address = address;
+                        tbl_User.phone = phone;
+                        db.tbl_user.Add(tbl_User);
+                        db.SaveChanges();
+                        Session["user"] = tbl_User;
+                        return RedirectToAction("Login");
+                    }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("this");
+                        TempData["message"] = "email đã được sử dụng";
+                        return RedirectToAction("Register");
+                    }               
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("here");
+                    TempData["message"] = "tên tài khoản đã được sử dụng";
+                    return RedirectToAction("Register");
+                }
+                System.Diagnostics.Debug.WriteLine("that");
+            }
+            catch(Exception e)
+            {
+                return RedirectToAction("Register");
+            }
+        }
+
+        public ActionResult UserInfor()
+        {
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Login()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            if (TempData["error"] != null)
+            {
+                ViewBag.error = TempData["error"].ToString();
+            }
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            if (TempData["message"] != null)
+            {
+                ViewBag.message = TempData["message"].ToString();
+            }
+
+            return View();
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         public ActionResult Introduce()
         {
@@ -259,23 +387,7 @@ namespace group19Web.Controllers
             return View();
         }
 
-        public ActionResult Login()
-        {
-            // get all cate
-            var listCategory = CategoryDAO.getAll();
-            ViewBag.categories = listCategory;
-
-            return View();
-        }
-
-        public ActionResult Register()
-        {
-            // get all cate
-            var listCategory = CategoryDAO.getAll();
-            ViewBag.categories = listCategory;
-
-            return View();
-        }
+        
 
     }
 }

@@ -1,6 +1,7 @@
 ﻿
 @{
     Layout = null;
+    var user = Session["user"] as group19Web.Models.tbl_user;
 }
 
 <!DOCTYPE html>
@@ -273,12 +274,36 @@
                     </div>
                     <div class="col-4 col-sm-4 order-sm-2">
                         <div class="float-left font13 login-register">
-                            <ul clas="ul-login-register">
-                                <a href="/Client/Login">
-                                <li>Đăng nhập</li></a>
-                                <a href="/Client/Register">
-                                <li>Đăng kí</li></a>
-                            </ul>
+
+                            @if (user != null && user.role.Equals("admin"))
+                            {
+
+
+                                <ul clas="ul-login-register">
+                                    <a href="/Client/Logout">
+                                    <li>Đăng xuất</li></a>
+                                    <a href="/tbl_category/MainAdmin">
+                                    <li>Admin</li></a>
+                                </ul>
+                            }
+                            else if (user != null && user.role.Equals("user"))
+                            {
+                        <ul clas="ul-login-register">
+                            <a href="/Client/Logout">
+                            <li>Đăng xuất</li></a>
+                            <a href="/Client/UserInfor">
+                            <li>Thông tin tài khoản</li></a>
+                        </ul>
+                            }else
+                            {
+                                <ul clas="ul-login-register">
+                                    <a href="/Client/Login">
+                                    <li>Đăng nhập</li></a>
+                                    <a href="/Client/Register">
+                                    <li>Đăng kí</li></a>
+                                </ul>
+                            }
+
                         </div>
                         <div class="float-right font13" id="shopping-cart">
                             <div class="dropdown">

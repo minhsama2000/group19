@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";   
 }
 
 
@@ -27,41 +27,66 @@
                     <div class="col-md-12">
                         <div class="form-block">
                             <div class="mb-4">
-                                <h3>Đăng nhập <strong>WebCayCanh</strong></h3>
+                                <h3>Đăng kí </h3>
                             </div>
-                            <form action="#" method="post">
-                                <div class="form-group first">
-                                    <label for="email">Email</label>
-                                    <input type="email" class="form-control" id="email">
-
+                            @if (ViewBag.message != null)
+                            {
+                                <div class="alert alert-danger">
+                                    <p class="mb-4" role="alert">
+                                        @ViewBag.message
+                                    </p>
                                 </div>
-                                <div class="form-group first">
-                                    <label for="username">Tài khoản</label>
-                                    <input type="text" class="form-control" id="username">
+                            }
+                        <form action="/Client/UserRegister" method="post" onsubmit="return validateRegister()">
+                            <div class="form-group first">
+                                <label for="email">Email</label>
+                                <input type="email" class="form-control" name="email" id="email">
 
-                                </div>
-                                <div class="form-group last mb-4">
-                                    <label for="password">Mật khẩu</label>
-                                    <input type="password" class="form-control" id="password">
+                            </div>
+                            <div class="form-group first">
+                                <label for="phone">Số điện thoại</label>
+                                <input type="text" class="form-control" name="phone" id="phone">
 
-                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="address">Địa chỉ</label>
+                                <input type="text" class="form-control" name="address" id="address">
 
-                                <input type="submit" value="Đăng kí" class="btn btn-pill text-white btn-block btn-primary">
+                            </div>
+                            <div class="form-group first">
+                                <label for="username">Tài khoản</label>
+                                <input type="text" class="form-control" name="username" id="username">
 
-                                <span class="d-block text-center my-4 text-muted"> hoặc đăng nhập với</span>
+                            </div>
+                            <div class="form-group last mb-4">
+                                <label for="password">Mật khẩu</label>
+                                <input type="password" class="form-control" name="password" id="password">
 
-                                <div class="social-login text-center">
-                                    <a href="#" class="facebook">
-                                        <span class="icon-facebook mr-3"></span>
-                                    </a>
-                                    <a href="#" class="twitter">
-                                        <span class="icon-twitter mr-3"></span>
-                                    </a>
-                                    <a href="#" class="google">
-                                        <span class="icon-google mr-3"></span>
-                                    </a>
-                                </div>
-                            </form>
+                            </div>
+
+                            <div class="form-group last mb-4">
+                                <label for="password">Nhập lại</label>
+                                <input type="password"
+                                       class="form-control"
+                                       id="againPassword" name="againPassword" />
+                            </div>
+
+                            <input type="submit" value="Đăng kí" class="btn btn-pill text-white btn-block btn-primary">
+
+                            <span class="d-block text-center my-4 text-muted"> hoặc đăng nhập với</span>
+
+                            <div class="social-login text-center">
+                                <a href="#" class="facebook">
+                                    <span class="icon-facebook mr-3"></span>
+                                </a>
+                                <a href="#" class="twitter">
+                                    <span class="icon-twitter mr-3"></span>
+                                </a>
+                                <a href="#" class="google">
+                                    <span class="icon-google mr-3"></span>
+                                </a>
+                            </div>
+                        </form>
                         </div>
                     </div>
                 </div>
@@ -74,5 +99,4 @@
 
 <script src="~/Content/Client/login/js/popper.min.js"></script>
 <script src="~/Content/Client/login/js/main.js"></script>
-
 

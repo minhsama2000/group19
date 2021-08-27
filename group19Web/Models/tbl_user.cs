@@ -41,6 +41,8 @@ namespace group19Web.Models
         [Required]
         [StringLength(45)]
         public string username { get; set; }
+        public string phone { get; set; }
+        public string address { get; set; }
 
         [Required]
         [StringLength(45)]
@@ -48,5 +50,10 @@ namespace group19Web.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_saleorder> tbl_saleorder { get; set; }
+
+        public override string ToString()
+        {
+            return "username: " + username + " password :" + password + " role: " + role + " email: " + email;
+        }
     }
 }
