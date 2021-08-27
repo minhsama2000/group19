@@ -1,0 +1,109 @@
+﻿
+@{
+    ViewBag.Title = "Waranty";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<style>
+
+
+
+    .content-news h2 {
+        font-size: 22px;
+        font-weight: bold;
+    }
+
+
+
+    .content-news h3 {
+        font-size: 18px;
+        font-weight: bold;
+    }
+</style>
+
+<section class="detail-news">
+  <div class="container">
+      <div class="row">
+          <div class="col-12 my-4 text-uppercase font13 cl_nau" id="breadcrumbs"><span><span><a href="https://webcaycanh.com/">Trang chủ</a> <i class="fa fa-angle-right"></i> <span class="breadcrumb_last" aria-current="page">Chính sách bảo hành</span></span></span></div>
+          <div class="clearfix"></div>
+          <div class="col-sm-9" id="left-panel">
+              <div class="w100"><h1 class="tit-h1 marb20 padb20 font30 UTMHelvetIns cl_xanh6">Chính sách bảo hành</h1></div>
+              <div class="content-news" id="pills-des">
+                  <p>
+                      <strong>
+                          1. Thời hạn bảo hành cây cảnh<br />
+                      </strong>
+                  </p>
+                  <p>Tất cả các sản phẩm được phân phối từ Web Cây Cảnh đều được bảo hành 7 ngày kể từ lúc giao hàng</p>
+                  <p>
+                      <strong>
+                          2. Điều kiện bảo hành cây cảnh<br />
+                      </strong>
+                  </p>
+                  <p>Sản phẩm sẽ được bảo hành nếu thoả mãn các điều kiện sau:</p>
+                  <p>
+                      a. Sản phẩm còn trong hạn bảo hành.<br />
+                      b. Hư hỏng do chất lượng sản phẩm.<br />
+                      c. Sản phẩm không nằm trong trường hợp bị từ chối bảo hành cây cảnh.<br />
+                      <strong>3. Điều kiện từ chối bảo hành</strong><br />
+                      Sản phẩm thuộc một trong những điều kiện sau sẽ bị từ chối bảo hành:<br />
+                      a. Sản phẩm đã quá thời gian bảo hành<br />
+                      b. Sản phẩm bị hư do thiên tai, hoả hoạn.<br />
+                      c. Sản phẩm bị hư do chăm sóc sai hướng dẫn.<br />
+                      d. Khách hàng gây nên những khuyết tật như biến dạng, rơi vỡ , trầy xướt.<br />
+                      e. Sản phẩm để sai môi trường khuyến cáo.<br />
+                      f. Sản phẩm bị thay đổi, trồng lại không phải do nhân viên của Web Cây Cảnh.<br />
+                      g. Sản phẩm không mua từ Web Cây Cảnh.<br />
+                      i. Không bảo hành vật dụng kèm theo nếu có.
+                  </p>
+              </div>
+          </div>
+          <!-- sidebar -->
+          <div class="col-sm-3" id="sidebar">
+              <div id="nav_menu-3" class="widget_nav_menu sidebar-widget mb-4">
+                  <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
+                      @foreach (var item in ViewBag.categories)
+                      {
+                          <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="/Client/DetailCategory?id=@item.id">@item.name</a></li>
+                      }
+
+                  </ul>
+              </div><div id="custom_html-3" class="widget_text widget_custom_html sidebar-widget mb-4"><div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Công Ty Web Cây Cảnh</div><div class="textwidget custom-html-widget"><a href="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg"><img class="alignnone size-full wp-image-9294" src="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg" alt="cty-cay-canh" /></a></div></div><div id="id_post_by_tax-2" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                  <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
+                      @foreach (var item in ViewBag.productTop8)
+                      {
+                          <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                              <div class="col-4 no-padding float-left">
+                                  <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
+                              </div>
+                              <div class="col-8 no-padding pl-2 float-left">
+                                  <h4 class="font14 bold" style="line-height: 22px;">@item.title</h4>
+                                  <span class="price font18 text-danger w100">@item.price <ins>₫</ins></span>
+                              </div>
+                          </a>
+                      }
+
+
+                  </div>
+              </div><div id="id_post_by_tax-3" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                  <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
+                      @foreach (var item in ViewBag.productTop8)
+                      {
+                          <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                              <div class="col-4 no-padding float-left">
+                                  <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
+                              </div>
+                              <div class="col-8 no-padding pl-2 float-left">
+                                  <h4 class="font14 bold" style="line-height: 22px;">Cây Monstera</h4>
+                                  <span class="price font18 text-danger w100">310.000 <ins>₫</ins></span>
+                              </div>
+                          </a>
+                      }
+
+                  </div>
+              </div>
+          </div> <!-- /#sidebar -->
+      </div>
+  </div>
+</section>
+

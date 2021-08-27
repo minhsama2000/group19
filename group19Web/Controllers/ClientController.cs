@@ -7,7 +7,6 @@ using group19Web.DAO;
 using System.Data;
 using PagedList;
 using group19Web.Models;
-using System.Text.RegularExpressions;  
 
 namespace group19Web.Controllers
 {
@@ -105,5 +104,178 @@ namespace group19Web.Controllers
 
             return View(products.ToPagedList(pageNumber, pageSize));
         }
+
+        public ActionResult Introduce()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult BuyWay()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult Waranty()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+        public ActionResult ReturnPolicy()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult ShipPolicy()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult InforPolicy()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult Policy()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+        public ActionResult Map()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult OfficeCare()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult AquaticCare()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult StoneCare()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult CareTreeService()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            var listTop8Product = ProductDAO.getTop8();
+            ViewBag.productTop8 = listTop8Product;
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            return View();
+        }
+
+        public ActionResult Register()
+        {
+            // get all cate
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            return View();
+        }
+
     }
 }

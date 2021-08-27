@@ -1,0 +1,155 @@
+﻿
+@{
+    ViewBag.Title = "Contact";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<section class="detail-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 my-4 text-uppercase font13 cl_nau"
+                     id="breadcrumbs">
+                    <span>
+                        <span>
+                            <a href="https://webcaycanh.com/">Trang chủ</a>
+                            <i class="fa fa-angle-right"></i>
+                            <span class="breadcrumb_last" aria-current="page">Liên Hệ</span>
+                        </span>
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-9" id="left-panel">
+                    <div class="w100">
+                        <h1 class="tit-h1 marb20 padb20 font30 UTMHelvetIns cl_xanh6">
+                            Liên Hệ
+                        </h1>
+                    </div>
+                    <div class="content-news" id="pills-des">
+                        <p style="text-align: justify">
+                            Để giải đáp những băn khoăn thắc mắc của bạn như:
+                        </p>
+                        <ul>
+                            <li style="text-align: justify">
+                                Bạn muốn trang trí bàn làm việc phải chọn loại cây gì?
+                            </li>
+                            <li style="text-align: justify">
+                                Nên để những loại cây như thế nào để phù hợp với bạn?
+                            </li>
+                            <li style="text-align: justify">
+                                Lựa chọn thế nào để có mức giá hợp lý nhất và vẫn đảm bảo
+                                mong muốn?
+                            </li>
+                            <li style="text-align: justify">
+                                Khi cây có hiện tượng váng lá, nhũn lá&#8230;Thì phải khắc
+                                phục ra sao?
+                            </li>
+                            <li style="text-align: justify">
+                                Nếu bạn mua nhiều thì bên web cây cảnh sẽ có ưu đãi thế nào?
+                            </li>
+                            <li style="text-align: justify">
+                                Muốn làm theo mẫu mình ưa thích thì phải làm gì?
+                            </li>
+                        </ul>
+                        <p>
+                            Nếu bạn có những thắc mắc như vậy hoặc nhiều hơn thế. Đừng
+                            ngại hãy liên hệ với chúng tôi qua số điện thoại:
+                            <span style="color: #ff0000"><strong>09888.33.653 </strong></span>
+                        </p>
+                        <p style="text-align: justify">
+                            Rất vui và vinh dự khi được phục vụ quý khách hàng
+                        </p>
+                        <p style="text-align: justify">
+                            <span style="color: #000000">
+                                <strong>=&gt; Hà Nội</strong>: Số 60 &#8211; Ngõ 235
+                                &#8211; Yên Hòa &#8211; Cầu Giấy &#8211; Hà Nội. Điện thoại:
+                                <span style="color: #ff0000"><strong>09888.33.653</strong></span>
+                                ( Gần đường Trung Kính )
+                            </span>
+                        </p>
+                        <p style="text-align: justify">
+                            <strong>=&gt; Hồ Chí Minh</strong>:
+                            <span style="color: #000000">
+                                Villa 6, Hẻm 21, Đào Duy Anh, Phường 9, Quận Phú Nhuận.
+                                Điện thoại:
+                                <span style="color: #ff0000"><strong>0909.28.5658</strong></span>
+                            </span>
+                        </p>
+                        <p style="text-align: justify">
+                            Đi vào hẻm 21 rẽ phải đến khu sân bóng đi thẳng vào là tới,
+                            hoặc hỏi bảo vệ nhà villa 6
+                        </p>
+                        <p style="text-align: justify">Công Ty TNHH WEBCAYCANH</p>
+                        <p style="text-align: justify">
+                            Văn Phòng: Số 3, phố Hoàng Lộc, Khu 17, Phường Lê Thanh Nghị,
+                            Thành Phố Hải Dương
+                        </p>
+                        <p style="text-align: justify">
+                            Người đại diện: Nguyễn Minh Huy
+                        </p>
+                        <p style="text-align: justify">Mã Số Thuế: 0801244382</p>
+                        <p style="text-align: justify">
+                            Tài khoản ngân hàng: 0341007114108
+                        </p>
+                        <p style="text-align: justify">Ngân Hàng: Vietcombank</p>
+                        <p style="text-align: justify">Chi Nhánh: Hải Dương</p>
+                        <p style="text-align: justify">
+                            <span style="color: #000000">
+                                Phản ánh thái độ phục vụ :
+                                <strong><span style="color: #ff0000">0966.56.1589</span></strong>
+                            </span>
+                        </p>
+                        <p style="text-align: justify">
+                            <strong>Thời gian bán hàng</strong>: 8h sáng đến 20h các ngày
+                            trong tuần
+                        </p>
+                    </div>
+                </div>
+                <!-- sidebar -->
+                <div class="col-sm-3" id="sidebar">
+                    <div id="nav_menu-3" class="widget_nav_menu sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
+                            @foreach (var item in ViewBag.categories)
+                            {
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="/Client/DetailCategory?id=@item.id">@item.name</a></li>
+                            }
+
+                        </ul>
+                    </div><div id="custom_html-3" class="widget_text widget_custom_html sidebar-widget mb-4"><div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Công Ty Web Cây Cảnh</div><div class="textwidget custom-html-widget"><a href="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg"><img class="alignnone size-full wp-image-9294" src="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg" alt="cty-cay-canh" /></a></div></div><div id="id_post_by_tax-2" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
+                            @foreach (var item in ViewBag.productTop8)
+                            {
+                                <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                                    <div class="col-4 no-padding float-left">
+                                        <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
+                                    </div>
+                                    <div class="col-8 no-padding pl-2 float-left">
+                                        <h4 class="font14 bold" style="line-height: 22px;">@item.title</h4>
+                                        <span class="price font18 text-danger w100">@item.price <ins>₫</ins></span>
+                                    </div>
+                                </a>
+                            }
+
+
+                        </div>
+                    </div><div id="id_post_by_tax-3" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
+                            @foreach (var item in ViewBag.productTop8)
+                            {
+                                <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                                    <div class="col-4 no-padding float-left">
+                                        <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
+                                    </div>
+                                    <div class="col-8 no-padding pl-2 float-left">
+                                        <h4 class="font14 bold" style="line-height: 22px;">Cây Monstera</h4>
+                                        <span class="price font18 text-danger w100">310.000 <ins>₫</ins></span>
+                                    </div>
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+                </div> <!-- /#sidebar -->
+            </div>
+        </div>
+      </section>
+

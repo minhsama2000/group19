@@ -1,0 +1,123 @@
+﻿
+@{
+    ViewBag.Title = "Map";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+}
+
+<section class="detail-news">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 my-4 text-uppercase font13 cl_nau"
+                     id="breadcrumbs">
+                    <span>
+                        <span>
+                            <a href="https://webcaycanh.com/">Trang chủ</a>
+                            <i class="fa fa-angle-right"></i>
+                            <span class="breadcrumb_last" aria-current="page">Bản đồ</span>
+                        </span>
+                    </span>
+                </div>
+                <div class="clearfix"></div>
+                <div class="col-sm-9" id="left-panel">
+                    <div class="w100">
+                        <h1 class="tit-h1 marb20 padb20 font30 UTMHelvetIns cl_xanh6">
+                            Bản đồ
+                        </h1>
+                    </div>
+                    <div class="content-news" id="pills-des">
+                        <p style="text-align: center">
+                            <strong>Địa chỉ Hà Nội</strong>: Số 60 &#8211; Ngõ 235 &#8211;
+                            Yên Hòa &#8211; Cầu Giấy &#8211; Hà Nội.
+                        </p>
+                        <p><strong>Hotline</strong>: 0988833653</p>
+                        <p>
+                            <strong>Thời gian bán hàng</strong>: 8h sáng đến 20h các ngày
+                            trong tuần
+                        </p>
+                        <p>
+                            Bản đồ cơ sở Hà Nội. Chạm vào bản đồ và thu nhỏ lại để quan
+                            sát tổng thể rõ hơn.<br />
+                            <iframe style="border: 0"
+                                    src="https://www.google.com/maps/embed?pb=!1m21!1m12!1m3!1d3724.2793989457514!2d105.79341770850347!3d21.021503719471944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m6!3e0!4m0!4m3!3m2!1d21.0228106!2d105.79264529999999!5e0!3m2!1svi!2s!4v1471250170880"
+                                    width="100%"
+                                    height="450"
+                                    frameborder="0"
+                                    allowfullscreen="allowfullscreen"></iframe>
+                        </p>
+                        <p>Bản đồ webcaycanh Hà Nội</p>
+                        <p style="text-align: center">
+                            &#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;&#8212;-
+                        </p>
+                        <p style="text-align: center">
+                            <strong>Địa chỉ Hồ Chí Minh</strong>: Villa 6 &#8211; Hẻm 21
+                            &#8211; Đào Duy Anh &#8211; P9 &#8211; Quận Phú Nhuận &#8211;
+                            HCM.
+                        </p>
+                        <p>&#8211; Bên trong sân bóng mini Đào Duy Anh</p>
+                        <p>
+                            &#8211; Bạn có thể vào sân bóng rồi hỏi villa 6 bán cây cảnh,
+                            bảo vệ sẽ chỉ, hoặc vào sân bóng, gọi điện, nhân viên sẽ đón
+                            bạn. ( Bảo bảo vệ là đến ship hàng để không mất vé xe và đi
+                            được thẳng xe vào cửa hàng 🙂 )
+                        </p>
+                        <p>
+                            <strong>Hotline</strong>: 0909285658<br />
+                            <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1959.5325092860114!2d106.67519519999999!3d10.806332300000008!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xf639d3d80b15f767!2zU8OibiBCw7NuZyDEkMOhIE1pbmkgxJDDoG8gRHV5IEFuaA!5e0!3m2!1svi!2s!4v1535044513014"
+                                    width="100%"
+                                    height="450"
+                                    frameborder="0"
+                                    allowfullscreen="allowfullscreen"></iframe><br />
+                            Bản đồ webcaycanh Hồ Chí Minh
+                        </p>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+                <!-- sidebar -->
+                <div class="col-sm-3" id="sidebar">
+                    <div id="nav_menu-3" class="widget_nav_menu sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
+                            @foreach (var item in ViewBag.categories)
+                            {
+                                <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="/Client/DetailCategory?id=@item.id">@item.name</a></li>
+                            }
+
+                        </ul>
+                    </div><div id="custom_html-3" class="widget_text widget_custom_html sidebar-widget mb-4"><div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Công Ty Web Cây Cảnh</div><div class="textwidget custom-html-widget"><a href="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg"><img class="alignnone size-full wp-image-9294" src="https://webcaycanh.com/wp-content/uploads/2019/06/cty-cay-canh.jpg" alt="cty-cay-canh" /></a></div></div><div id="id_post_by_tax-2" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
+                            @foreach (var item in ViewBag.productTop8)
+                            {
+                                <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                                    <div class="col-4 no-padding float-left">
+                                        <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
+                                    </div>
+                                    <div class="col-8 no-padding pl-2 float-left">
+                                        <h4 class="font14 bold" style="line-height: 22px;">@item.title</h4>
+                                        <span class="price font18 text-danger w100">@item.price <ins>₫</ins></span>
+                                    </div>
+                                </a>
+                            }
+
+
+                        </div>
+                    </div><div id="id_post_by_tax-3" class="Get_Post_By_Taxonomy sidebar-widget mb-4">
+                        <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
+                            @foreach (var item in ViewBag.productTop8)
+                            {
+                                <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
+                                    <div class="col-4 no-padding float-left">
+                                        <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
+                                    </div>
+                                    <div class="col-8 no-padding pl-2 float-left">
+                                        <h4 class="font14 bold" style="line-height: 22px;">Cây Monstera</h4>
+                                        <span class="price font18 text-danger w100">310.000 <ins>₫</ins></span>
+                                    </div>
+                                </a>
+                            }
+
+                        </div>
+                    </div>
+                </div> <!-- /#sidebar -->
+            </div>
+        </div>
+      </section>
+

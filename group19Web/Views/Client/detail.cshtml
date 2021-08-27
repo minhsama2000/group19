@@ -46,7 +46,7 @@
                         <div class="font18 w100 mb-2 text-left">Mô tả ngắn</div>
                         <div class="text-justify" style="line-height: 24px;">@ViewBag.productFind.short_description</div>
                         <div id="gia-cay" class="w100 mt-5 mb-3">
-                            <span class="gia-cay col-6 cl_red UTMHelvetIns font24 float-left">249,000đ</span>
+                            <span class="gia-cay col-6 cl_red UTMHelvetIns font24 float-left">@ViewBag.productFind.price đ</span>
                             <div class="float-right col-6 ">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text">Số lượng</span></div>
@@ -168,7 +168,7 @@
                     <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Danh mục cây cảnh</div><ul id="menu-danh-muc-san-pham" class="menu">
     @foreach (var item in ViewBag.categories)
     {
-        <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="https://webcaycanh.com/cay-canh-phong-thuy/">@item.name</a></li>
+        <li class="menu-item menu-item-type-taxonomy menu-item-object-tax_cay current-cay-ancestor current-menu-parent current-cay-parent menu-item-6138"><a href="/Client/DetailCategory?id=@item">@item.name</a></li>
     }
 
 </ul>
@@ -176,7 +176,7 @@
                     <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây cảnh mới nhất</div><div class="sb-in-box">
     @foreach (var item in ViewBag.productTop8)
     {
-        <a class="mb-4 w100" href="https://webcaycanh.com/cay-mini-monstera/" title="@item.title">
+        <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
             <div class="col-4 no-padding float-left">
                 <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="@item.title" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 800w" sizes="(max-width: 83px) 100vw, 83px" />
             </div>
@@ -193,7 +193,7 @@
                     <div class="sb-tit bg_xanh6 cl_white text-uppercase text-center py-3">Cây Cảnh Ưa Thích</div><div class="sb-in-box">
     @foreach (var item in ViewBag.productTop8)
     {
-        <a class="mb-4 w100" href="https://webcaycanh.com/cay-monstera/" title="@item.title">
+        <a class="mb-4 w100" href="/Client/detail?id=@item.id" title="@item.title">
             <div class="col-4 no-padding float-left">
                 <img src="~/UploadFile/productImage/@item.avatar" class="img-thumbnail w100 wp-post-image" alt="cây monstera delicisosa" loading="lazy" srcset="~/UploadFile/productImage/@item.avatar 83w, ~/UploadFile/productImage/@item.avatar 400w, ~/UploadFile/productImage/@item.avatar 1024w, ~/UploadFile/productImage/@item.avatar 150w, ~/UploadFile/productImage/@item.avatar 768w, ~/UploadFile/productImage/@item.avatar 1536w, ~/UploadFile/productImage/@item.avatar 255w, ~/UploadFile/productImage/@item.avatar 1642w" sizes="(max-width: 83px) 100vw, 83px" />
             </div>
