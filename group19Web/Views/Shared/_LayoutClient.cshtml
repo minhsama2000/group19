@@ -6,10 +6,6 @@
 
     var cart = Session["cart"] as group19Web.DTO.Cart;
     var quantity = 1;
-    if(cart != null)
-    {
-        quantity = cart.cartItems.Count;
-    }
 
     decimal total = Convert.ToDecimal(Session["totalItem"]);
     int count = Convert.ToInt32(Session["count"]);
@@ -1337,11 +1333,13 @@
             
           var qty = parseInt(jQuery("#qty" + productId).val());
             var price = parseFloat(jQuery("#getPrice").val());
-            console.log(qty + " " + price + " " + productId);
+            var name = jQuery("#productName").val()
+            console.log(qty + " " + price + " " + productId + " " + name);
             var cartItem = {};
             cartItem.quantity = qty;
             cartItem.productId = productId;
             cartItem.priceUnit = price;
+            cartItem.productName = name;
             cartItem.finalTotal = price * qty;
         if (qty <= 0) {
           jQuery("#qty" + productId).val(1);

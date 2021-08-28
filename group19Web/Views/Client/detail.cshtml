@@ -6,10 +6,6 @@
     var cart = Session["cart"] as group19Web.DTO.Cart;
     var quantity = 1;
     var qty = "qty" + ViewBag.productFind.id;
-    if (cart != null)
-    {
-        quantity = cart.cartItems.Count;
-    }
 }
 
 <style>
@@ -28,6 +24,7 @@
             <div class="col-12 my-4 text-uppercase font13 cl_nau" id="breadcrumbs"><span><span><a href="/Client/Index">Trang chủ</a> <i class="fa fa-angle-right"></i> <span class="breadcrumb_last" aria-current="page">@ViewBag.productFind.title</span></span></span></div>
             <div class="clearfix"></div>
             <div class="col-sm-9 a_cl_xanh" id="left-panel">
+                <input type="hidden" value="@ViewBag.productFind.title" id="productName"/>
                 <div class="w100"><h1 class="tit-h1 tit-border-b3 pull-left marb20 padb20 font30 UTMHelvetIns cl_nau">@ViewBag.productFind.title</h1></div>
                 <div class="row" id="info-cay">
                     <div class="col col-md-6">

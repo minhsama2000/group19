@@ -23,7 +23,8 @@ namespace group19Web.Controllers
 
         public ActionResult addCart(CartItem cartItem)
         {
-            System.Diagnostics.Debug.WriteLine(cartItem.ToString());
+            Boolean rel = false;
+            System.Diagnostics.Debug.WriteLine("cartItem: " + cartItem.ToString());
             Cart cart = null;
             if (Session["cart"] != null)
             {
@@ -32,25 +33,35 @@ namespace group19Web.Controllers
                 {
                     if (temp.productId == cartItem.productId)
                     {
+                        rel = true;
+                        temp.quantity = temp.quantity + cartItem.quantity;
                         temp.finalTotal = temp.finalTotal + cartItem.finalTotal;
-                        Session["cart"] = cart;
-                    }
-                    else
-                    {
-                        cart.cartItems.Add(temp);
-                        Session["cart"] = cart;
-                    }
+                        System.Diagnostics.Debug.WriteLine(temp.ToString());
+                        System.Diagnostics.Debug.WriteLine("temp");
+                    }                
                 }
+                if (rel == false)
+                {
+                    System.Diagnostics.Debug.WriteLine("insert");
+                    cart.cartItems.Add(cartItem);
+                }
+                Session["cart"] = cart;
             }
             else
             {
+                System.Diagnostics.Debug.WriteLine("new cart");
                 cart = new Cart();
                 cart.cartItems = new List<CartItem>();
                 cart.cartItems.Add(cartItem);
                 Session["cart"] = cart;
             }
+
+            
+            
             
             Session["count"] = cart.cartItems.Count;
+            
+            
 
             decimal total = 0;
             foreach (CartItem cartTotal in cart.cartItems){

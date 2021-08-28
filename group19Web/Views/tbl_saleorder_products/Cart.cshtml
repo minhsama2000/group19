@@ -37,30 +37,31 @@
                                     {
                                         foreach (var item in cart.cartItems.ToList())
                                         {
-                                            <tr>
+                                            
+                                        <tr>
+                                            <td>@item.productName</td>
+                                            <td>
                                                 @{
-                                                    var qty = "qty[" + item.productId + "]";
+                                                 var qty = "qty[" + item.productId + "]";
                                                 }
-                                                <td>@item.productName</td>
-                                                <td>
-                                                    <input type="text"
-                                                           min="1"
-                                                           name="@qty"
-                                                           value="@item.quantity"
-                                                           size="1" />
-                                                </td>
-                                                <td style="text-align: right">@item.priceUnit</td>
+                                                <input type="text"
+                                                       min="1"
+                                                       name="@qty"
+                                                       value="@item.quantity"
+                                                       size="1" />
+                                            </td>
+                                            <td style="text-align: right">@item.priceUnit</td>
 
-                                                <td style="text-align: right">
-                                                    @item.finalTotal
-                                                    <span onclick="removeCartItemMenu(@item.productId, 'cart');"
-                                                          class="btn btn-danger btn-sm">
-                                                        <i class="fa fa-times"></i>
-                                                    </span>
-                                                </td>
-                                            </tr>
-                                        }
+                                            <td style="text-align: right">
+                                                @item.finalTotal
+                                                <span onclick="removeCartItemMenu(@item.productId, 'cart');"
+                                                      class="btn btn-danger btn-sm">
+                                                    <i class="fa fa-times"></i>
+                                                </span>
+                                            </td>
+                                        </tr>
                                     }
+                                }
 
                                     <tr>
                                         <td colspan="2"></td>
