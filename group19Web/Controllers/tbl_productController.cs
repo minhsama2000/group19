@@ -136,7 +136,7 @@ namespace group19Web.Controllers
             tbl_product tbl_Product = getRequestProductForUpdate();
             if (CategoryDAO.findById((int)tbl_Product.category_id) != CategoryDAO.findByName(obj["hidText"].ToString()))
             {
-                tbl_Product.category_id =  CategoryDAO.findByName(obj["hidText"].ToString()).id;
+                tbl_Product.category_id = CategoryDAO.findByName(obj["hidText"].ToString()).id;
                 System.Diagnostics.Debug.WriteLine(tbl_Product.category_id);
             }
             ProductDAO.updateById(id, tbl_Product);

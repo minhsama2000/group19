@@ -139,6 +139,7 @@ namespace group19Web.Controllers
             string email = Request["email"];
             string address = Request["address"];
             string phone = Request["phone"];
+            string fullname = Request["fullname"];
             tbl_user tbl_User = null;
 
             try
@@ -155,6 +156,7 @@ namespace group19Web.Controllers
                         tbl_User.created_date = DateTime.UtcNow.Date;
                         tbl_User.address = address;
                         tbl_User.phone = phone;
+                        tbl_User.fullname = fullname;
                         db.tbl_user.Add(tbl_User);
                         db.SaveChanges();
                         Session["user"] = tbl_User;
@@ -181,10 +183,75 @@ namespace group19Web.Controllers
             }
         }
 
+        public ActionResult UpdateUser()
+        {
+            var listCategory = CategoryDAO.getAll();
+            ViewBag.categories = listCategory;
+
+            string email = Request["email"];
+            string address = Request["address"];
+            string phone = Request["phone"];
+            string fullname = Request["fullname"];
+
+            tbl_user user = Session["user"] as group19Web.Models.tbl_user;
+            System.Diagnostics.Debug.WriteLine(user.ToString());
+            System.Diagnostics.Debug.WriteLine(email);
+            //System.Diagnostics.Debug.WriteLine(UserDAO.isEmail(email));
+            System.Diagnostics.Debug.WriteLine(UserDAO.test(email).ToString());
+            try
+            {
+                    if (!UserDAO.isEmail(email))
+                    {
+                        user.email = email;
+                        user.address = address;
+                        user.phone = phone;
+                        user.fullname = fullname;
+                        user.updated_date = DateTime.UtcNow.Date; 
+                        UserDAO.updateUser(user);
+
+                        Session["user"] = user;
+                        return RedirectToAction("UserInfor");
+                    }
+                    else
+                    {
+                        TempData["messageInfor"] = "email đã được đăng kí cho tài khoản khác";
+                        return RedirectToAction("UserInfor");
+                    }
+                
+            }
+            catch (Exception e)
+            {
+                return RedirectToAction("UserInfor");
+            }
+        }
+
+        public ActionResult UploadImage()
+        {
+            tbl_user user = Session["user"] as group19Web.Models.tbl_user;
+            var file = Request.Files["ImageFile"];
+
+            if (file != null && file.ContentLength > 0)
+            {
+                string fileName = System.IO.Path.GetFileName(file.FileName);
+                string uploadPath = Server.MapPath("~/UploadFile/userImage/" + fileName);
+                file.SaveAs(uploadPath);
+                user.avatar = fileName;
+            }
+            Session["user"] = user;
+            UserDAO.updateUserImage(user);
+            return RedirectToAction("UserInfor");
+        }
+
         public ActionResult UserInfor()
         {
             var listCategory = CategoryDAO.getAll();
             ViewBag.categories = listCategory;
+
+            if (TempData["messageInfor"] != null)
+            {
+                ViewBag.messageInfor = TempData["messageInfor"].ToString();
+            }
+
             return View();
         }
 

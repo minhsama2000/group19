@@ -660,6 +660,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="UploadFile\categoryImage\" />
     <Folder Include="UploadFile\productImage\" />
+    <Folder Include="UploadFile\userImage\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

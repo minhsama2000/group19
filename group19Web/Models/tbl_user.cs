@@ -44,6 +44,10 @@ namespace group19Web.Models
         public string phone { get; set; }
         public string address { get; set; }
 
+        public string avatar { get; set; }
+
+        public string fullname { get; set; }
+
         [Required]
         [StringLength(45)]
         public string role { get; set; }
