@@ -31,10 +31,11 @@ namespace group19Web.DAO
             return user;
         }
 
-        public bool isEmail(string email)
+        public bool isEmail(int id,string email)
         {
+            bool rel = false;
 
-            var user = db.tbl_user.SqlQuery("Select * from webcaycanh.tbl_user where not(email = '" + email + "')").ToList() ;
+            var user = db.tbl_user.SqlQuery("Select * from webcaycanh.tbl_user where not(id = '" + id + "')").ToList() ;
 
             if (user != null)
                 {
@@ -42,11 +43,13 @@ namespace group19Web.DAO
                 {
                     if (item.email.Equals(email))
                     {
-                        return true;
+                        System.Diagnostics.Debug.WriteLine("here");
+                        rel = true;
                     }
+                    System.Diagnostics.Debug.WriteLine(item.ToString());
                 }                                          
-                }
-            return false;
+            }
+            return rel;
         }
 
         public void updateUser(tbl_user user)

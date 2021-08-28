@@ -33,5 +33,10 @@ namespace group19Web.Models
         public virtual tbl_product tbl_product { get; set; }
 
         public virtual tbl_saleorder tbl_saleorder { get; set; }
+
+        public override string ToString()
+        {
+            return "quantity: " + quantity;
+        }
     }
 }

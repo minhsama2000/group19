@@ -1301,33 +1301,43 @@
     <script></script>
 
     <script type="text/javascript">
-        function removeCartItemMenu(id, cart) {
-            
-        jQuery
-          .ajax({
-            method: "POST",
+      //  function removeCartItemMenu(id) {
+      //      var cartItem = {};
+      //      cartItem.productId = id
+      //      jQuery
+      //          .ajax({
+      //              method: "POST",
 
-            url: "/ajax/removecart",
+      //              url: "/tbl_saleorder_products/removecart",
 
-            data: { id: id },
-          })
+      //              data: '{cartItem: ' + JSON.stringify(cartItem) + '}',
+      //              dataType: "json",
+      //              contentType: "application/json; charset=utf-8",
+      //              success: function () {
+      //                  // alert("Data has been added successfully.");  
+      //                  alert("Xóa thành công");
+      //              },
+      //              error: function () {
+      //                  alert("Lỗi xóa");
+      //              }
+      //          });
 
-          .done(function (msg) {
-            if (cart == "cart") {
-              location.reload();
-            } else {
-              jQuery("#box-cart").html(msg);
+      //    //.done(function (msg) {
+      //    //  if (cart == "cart") {
+      //    //    location.reload();
+      //    //  } else {
+      //    //    jQuery("#box-cart").html(msg);
 
-              var totalCart = jQuery("#total-item").val();
+      //    //    var totalCart = jQuery("#total-item").val();
 
-              jQuery("#num-cart-price").text(0);
+      //    //    jQuery("#num-cart-price").text(0);
 
-              jQuery("#num-cart").text(totalCart);
+      //    //    jQuery("#num-cart").text(totalCart);
 
-              jQuery("#dropdownMenu2").trigger("click");
-            }
-          });
-      }
+      //    //    jQuery("#dropdownMenu2").trigger("click");
+      //    //  }
+      //    //});
+      //}
 
         function addCart(productId) {
             

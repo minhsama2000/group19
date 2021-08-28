@@ -24,6 +24,12 @@ namespace group19Web.DAO
             return products;
         }
 
+        public tbl_product findByIdAsObj(int id)
+        {
+            var product = (from s in db.tbl_product where s.id == id select s).FirstOrDefault();
+            return product;
+        }
+
         public dynamic findById(int id)
         {
             var product = (from s in db.tbl_product where s.id == id select s).FirstOrDefault();

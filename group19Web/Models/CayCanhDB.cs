@@ -23,6 +23,16 @@ namespace group19Web.Models
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<tbl_saleorder>()
+                .HasMany<tbl_product>(s => s.Tbl_Products)
+                .WithMany(c => c.Tbl_Saleorders)
+                .Map(cs =>
+                {
+                    cs.MapLeftKey("product_id");
+                    cs.MapRightKey("saleorder_id");
+                    cs.ToTable("tbl_saleorder_products");
+                });
+
             modelBuilder.Entity<tbl_category>()
                 .Property(e => e.created_date)
                 .HasPrecision(6);

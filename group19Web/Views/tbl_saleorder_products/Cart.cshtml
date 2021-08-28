@@ -17,7 +17,7 @@
             <div class="row">
                 <div class="col-12">
                     <div class="box-shadow bg-white p-2">
-                        <form action="/tbl_saleorder_products/UpdateCart" method="post">
+                       
                             <input type="hidden"
                                    id="_wpnonce"
                                    name="_wpnonce"
@@ -31,58 +31,80 @@
                                         <th>Số lượng</th>
                                         <th style="text-align: right">Giá</th>
                                         <th style="text-align: right">Thành tiền</th>
+                                        <th></th>
                                     </tr>
 
                                     @if (cart != null)
                                     {
                                         foreach (var item in cart.cartItems.ToList())
                                         {
-                                            
-                                        <tr>
-                                            <td>@item.productName</td>
-                                            <td>
-                                                @{
-                                                 var qty = "qty[" + item.productId + "]";
-                                                }
-                                                <input type="text"
-                                                       min="1"
-                                                       name="@qty"
-                                                       value="@item.quantity"
-                                                       size="1" />
-                                            </td>
-                                            <td style="text-align: right">@item.priceUnit</td>
+                                            <form action="/tbl_saleorder_products/UpdateCart" method="post" onsubmit="return validateUpdateCart()">
+                                            <tr>
+                                                <input type="hidden" value="@item.productId" name="productId" />
+                                                <td>@item.productName</td>
+                                                <td>
+                                                    @{
+                                                        var qty = "qty[" + item.productId + "]";
+                                                    }
+                                                    <input type="text"
+                                                           id="quantityCart"
+                                                           min="1"
+                                                           name="quantity"
+                                                           value="@item.quantity"
+                                                           size="1" />
+                                                </td>
+                                                <td style="text-align: right">@item.priceUnit đ</td>
 
-                                            <td style="text-align: right">
-                                                @item.finalTotal
-                                                <span onclick="removeCartItemMenu(@item.productId, 'cart');"
-                                                      class="btn btn-danger btn-sm">
-                                                    <i class="fa fa-times"></i>
-                                                </span>
-                                            </td>
-                                        </tr>
+                                                <td style="text-align: right">
+                                                    @item.finalTotal
+                                                    đ
+
+                                                </td>
+                                                <td style="text-align:right">
+                                                    <input type="submit"
+                                                           value="Cập nhật"
+                                                           class="btn btn-warning" />
+                                                    
+                                                        <a href="/tbl_saleorder_products/removecartItem?id=@item.productId"><input type="button"
+       value="Xóa"
+       class="btn btn-danger" /></a>
+                                                        
+                                                </td>
+                                            </tr>
+                                            </form>
+                                        }
                                     }
-                                }
 
                                     <tr>
-                                        <td colspan="2"></td>
+                                        <td colspan="3"></td>
                                         <td class="text-right"><strong>Tổng tiền</strong></td>
                                         <td class="text-right">
-                                            <b class="main-color fs13">@total</b>
+                                            <b class="main-color fs13">@total đ</b>
                                         </td>
                                     </tr>
                                 </table>
                             </div>
 
                             <p>
-                                <input type="submit"
-                                       value="Cập nhật"
-                                       class="btn btn-warning" />
-                                <a class="btn btn-danger" href="/thanh-toan">Thanh toán</a>
+                                <a class="btn btn-danger" href="/tbl_saleorder_products/payment">Thanh toán</a>
                             </p>
-                        </form>
+                        
                     </div>
                 </div>
             </div>
         </div>
       </div>
+
+<script>
+    function validateUpdateCart() {
+        var quantity = document.getElementById("quantityCart");
+    var filter = /^([0-9_\.\-])/;
+        if (!filter.test(quantity.value)) {
+            alert("hay nhap so luong hop le \n example: 10");
+            quantity.focus;
+            return false;
+        }
+    return true;
+    }
+</script>
 

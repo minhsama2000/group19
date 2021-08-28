@@ -253,7 +253,7 @@ namespace group19Web.Controllers
             System.Diagnostics.Debug.WriteLine(UserDAO.test(email).ToString());
             try
             {
-                    if (!UserDAO.isEmail(email))
+                    if (!UserDAO.isEmail(user.id,email))
                     {
                         user.email = email;
                         user.address = address;

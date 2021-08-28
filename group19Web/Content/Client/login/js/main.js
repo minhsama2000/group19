@@ -80,6 +80,33 @@ function validateLogin() {
     return true;
 }
 
+function validateFormPayment() {
+    var fullname = document.getElementById("fullname");
+    var phone = document.getElementById("phone");
+    var email = document.getElementById("email");
+    var address = document.getElementById("address");
+    var filter =
+        /^([a-zA-Z0-9_\.\-])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    var filter1 = /^([a-zA-Z0-9_\.\-])/;
+    var filter2 = /^([0-9_\.\-])/;
+    if (!filter.test(email.value)) {
+        alert("hay nhap email hop le \n example: minhsama@gmail.com");
+        email.focus;
+        return false;
+    }
+    if (!filter1.test(fullname.value)) {
+        alert("hay nhap ten hop le \n example: Nguyễn Văn A");
+        fullname.focus;
+        return false;
+    }
+    if (!filter2.test(phone.value)) {
+        alert("hay nhap so dien thoai hop le \n example: 0962177082");
+        phone.focus;
+        return false;
+    }
+    return true;
+}
+
 function validateUpdateUser() {
     var email = document.getElementById("email");
     var phone = document.getElementById("phone");

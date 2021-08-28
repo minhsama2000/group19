@@ -660,6 +660,7 @@
     <Content Include="Views\Client\Register.cshtml" />
     <Content Include="Views\Client\UserInfor.cshtml" />
     <Content Include="Views\tbl_saleorder_products\Cart.cshtml" />
+    <Content Include="Views\tbl_saleorder_products\Payment.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -57,5 +57,12 @@ namespace group19Web.Models
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<tbl_saleorder_products> tbl_saleorder_products { get; set; }
+
+        public virtual ICollection<tbl_product> Tbl_Products { get; set; }
+
+        public override string ToString()
+        {
+            return "name : " + customer_name; 
+        }
     }
 }

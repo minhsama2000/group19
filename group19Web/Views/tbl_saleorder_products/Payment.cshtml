@@ -1,0 +1,215 @@
+﻿@using group19Web.Models;
+
+@{
+    ViewBag.Title = "Payment";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    var cart = Session["cart"] as group19Web.DTO.Cart;
+    var quantity = 1;
+    if (cart != null)
+    {
+        quantity = cart.cartItems.Count;
+    }
+    decimal total = Convert.ToDecimal(Session["totalItem"]);
+    int count = Convert.ToInt32(Session["count"]);
+
+
+    string id = "";
+    string fullname = "";
+    string address = "";
+    string phone = "";
+    string email = "";
+    string error = "";
+    if(Session["cart"] == null)
+    {
+        error = "giỏ hàng trống";
+    }
+    if(Session["user"] != null)
+    {
+        tbl_user user = (tbl_user) Session["user"];
+        id = Convert.ToString(user.id);
+        fullname = user.fullname;
+        address = user.address;
+        phone = user.phone;
+        email = user.email;
+    }
+
+}
+
+<link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+<div class="full">
+    <div class="container">
+
+        <h3 class="mt-3">Thông tin đơn hàng</h3>
+            <div class="scroll-wrapper table-responsive relative">
+                <div class="table-responsive">
+                    <table class="table-bordered table">
+                        <tr>
+                            <th>Sản phẩm</th>
+                            <th>Số lượng</th>
+                            <th style="text-align: right">Giá</th>
+                            <th style="text-align: right">Thành tiền</th>
+                            <th></th>
+                        </tr>
+
+                        @if (cart != null)
+                        {
+                            foreach (var item in cart.cartItems.ToList())
+                            {
+                                <form action="/tbl_saleorder_products/UpdateCart" method="post" onsubmit="return validateUpdateCart()">
+                                <tr>
+                                    <input type="hidden" value="@item.productId" name="productId" />
+                                    <td>@item.productName</td>
+                                    <td>
+                                        @{
+                                            var qty = "qty[" + item.productId + "]";
+                                        }
+                                        <input type="text"
+                                               id="quantityCart"
+                                               min="1"
+                                               name="quantity"
+                                               value="@item.quantity"
+                                               size="1" />
+                                    </td>
+                                    <td style="text-align: right">@item.priceUnit đ</td>
+
+                                    <td style="text-align: right">
+                                        @item.finalTotal
+                                        đ
+
+                                    </td>
+                                    <td style="text-align:right">
+                                        <input type="submit"
+                                               value="Cập nhật"
+                                               class="btn btn-warning" />
+
+                                        <a href="/tbl_saleorder_products/removecartItem?id=@item.productId">
+                                            <input type="button"
+                                                   value="Xóa"
+                                                   class="btn btn-danger" />
+                                        </a>
+
+                                    </td>
+                                </tr>
+                </form>
+            }
+        }
+
+                        <tr>
+                            <td colspan="3"></td>
+                            <td class="text-right"><strong>Tổng tiền</strong></td>
+                            <td class="text-right">
+                                <b class="main-color fs13">@total đ</b>
+                            </td>
+                        </tr>
+                        </table>
+                    </div>
+                    <div class="scroll-element scroll-x">
+                        <div class="scroll-element_outer">
+                            <div class="scroll-element_size"></div>
+                            <div class="scroll-element_track"></div>
+                            <div class="scroll-bar" style="width: 96px;"></div>
+                        </div>
+                    </div>
+                    <div class="scroll-element scroll-y">
+                        <div class="scroll-element_outer">
+                            <div class="scroll-element_size"></div>
+                            <div class="scroll-element_track"></div>
+                            <div class="scroll-bar" style="height: 96px;"></div>
+                        </div>
+                    </div>
+                </div>
+            <form action="/tbl_saleorder_products/postPayment" method="post" onsubmit="return validateFormPayment();">
+                <h3>Thông tin khách hàng</h3>
+                <input type="hidden" value="@id" name="paymentUserId"/>
+                <div class='col-xs-12'>
+                    <div class="form-group">
+                        <input type="text" id="fullname" name="fullname" placeholder="Họ tên (*)" value="@fullname" class="form-control ss-q-short required" aria-required="true" required id="id-full-name" dir="auto" title="">
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="form-group">
+                        <input name="address" id="address" value="@address" placeholder="Địa chỉ" class="form-control ss-q-long valid"></input>
+                    </div>
+                </div>
+
+
+                <div class='col-xs-12'>
+                    <div class="form-group">
+                        <input type="text" name="phone" id="phone" placeholder="Điện thoại (*)" value="@phone" class="form-control ss-q-short required" aria-required="true" required id="id-phone" dir="auto" title="">
+                    </div>
+                </div>
+                <div class='col-xs-12'>
+                    <div class="form-group">
+                        <input type="text" name="email" id="email" placeholder="Email (*)" value="@email" class="form-control ss-q-short required" aria-required="true" required id="id-email" dir="auto" title="">
+                    </div>
+                </div>
+                <div class='col-xs-12'>
+                    <div class="form-group">
+                        <input type="text" id="date_ship" name="date_ship" placeholder="Ngày giao hàng (*)" value="" class="form-control ss-q-short required" aria-required="true" required id="id-date-ship" dir="auto" title="">
+                    </div>
+                </div>
+                <div class='col-xs-12'>
+                    <div class="form-group">
+                        <select class="form-control ss-q-short required" aria-required="true" required id="id-time-ship" dir="auto" name="time_ship" id="time_ship">
+                            <option value="">Thời gian giao hàng</option>
+                            <option value="9h-12h30">Buổi sáng</option>
+                            <option value="12h-14h">12h - 14h</option>
+                            <option value="14h-16h">14h - 16h</option>
+                            <option value="16h-18h">16h - 18h</option>
+                            <option value="18h-20h">18h - 20h</option>
+                            <option value="19h-21h">19h - 21h</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="col-xs-12">
+                    <span style="color: #ff0000;"><strong>Lưu ý</strong></span>: Tiền vận chuyển sẽ tính theo 5.000 đ / km, tối thiểu phí ship là 10.000 đ, đối với cây lớn trên 1m chúng tôi sẽ liên hệ thông báo giá trước khi giao.
+                    </br>
+                    Đối với khách hàng ở tỉnh chỉ chuyển cây không cao dưới 50cm để sản được đảm bảo.
+                </div>
+                <div class="col-xs-12 mt-3">
+                    <textarea name="note" class="form-control" placeholder="Ghi chú khác"></textarea>
+                </div>
+                <h3 class="mt-3">Phương thức thanh toán</h3>
+                <ul class="payment_methods p-0">
+                    <li>
+                        <input id="payment_method_bacs" type="radio" class="input-radio" name="payment_method" value="Chuyển khoản ngân hàng"> <label for="payment_method_bacs">Chuyển khoản ngân hàng </label>
+                        <div class="payment_method_bacs" style="display: none;">
+                            <p>
+                                Nếu thanh toán chuyển khoản, quý khách vui lòng chuyển khoản trước.<br />
+                                Tên chủ tài khoản: Nguyễn Minh Huy
+                            </p>
+                            <p>Số Tài Khoản: 0491.00000.9993</p>
+                            <p>Ngân hàng: Vietcombank</p>
+                            <p>Chi nhánh: Thăng Long Hà Nội</p>
+
+                        </div>
+                    </li>
+                    <li>
+                        <input id="payment_method_cod" type="radio" class="input-radio" name="payment_method" value="Thanh toán khi giao hàng" checked="checked"> <label for="payment_method_cod">Thanh toán khi giao hàng </label>
+                        <div class="payment_method_cod" style="display: block;">
+                            <p>Chỉ áp dụng cho quý khách hàng trong nội thành Hà Nội và Hồ Chí Minh</p>
+
+                        </div>
+                    </li>
+                </ul>
+
+                <div class="col-xs-12 text-center mt-3 mart20">
+                    <div class="form-group bg-danger">
+                        <p class="">@error</p>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" name="submit" value="Submit" id="ss-submit" class="btn-button2 btn btn-warning jfk-button jfk-button-action ">Thanh toán</button>
+                        <button type="reset" value="Reset" class="btn-button2 btn btn-danger jfk-button jfk-button-action ">Nhập lại</button>
+                    </div>
+                </div>
+                <div class="none">
+                    <input name="status" id="status" value="0" type="hidden">
+                    <input name="tong_tien" id="tong_tien" value="" type="hidden">
+                </div>
+            </form>
+
+    </div>
+</div>  
+<script src="~/Content/Client/login/js/main.js"></script>
