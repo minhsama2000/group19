@@ -8,6 +8,8 @@ using System.Data;
 using PagedList;
 using group19Web.Models;
 using System.Web;
+using group19Web.DTO;
+using System.Collections.Generic;
 
 namespace group19Web.Controllers
 {
@@ -18,6 +20,46 @@ namespace group19Web.Controllers
         UserDAO UserDAO = new UserDAO();
         private CayCanhDB db = new CayCanhDB();
         // GET: Client
+
+        public ActionResult addCart(CartItem cartItem)
+        {
+            System.Diagnostics.Debug.WriteLine(cartItem.ToString());
+            Cart cart = null;
+            if (Session["cart"] != null)
+            {
+                cart = (Cart)Session["cart"];
+                foreach (CartItem temp in cart.cartItems.ToList())
+                {
+                    if (temp.productId == cartItem.productId)
+                    {
+                        temp.finalTotal = temp.finalTotal + cartItem.finalTotal;
+                        Session["cart"] = cart;
+                    }
+                    else
+                    {
+                        cart.cartItems.Add(temp);
+                        Session["cart"] = cart;
+                    }
+                }
+            }
+            else
+            {
+                cart = new Cart();
+                cart.cartItems = new List<CartItem>();
+                cart.cartItems.Add(cartItem);
+                Session["cart"] = cart;
+            }
+            
+            Session["count"] = cart.cartItems.Count;
+
+            decimal total = 0;
+            foreach (CartItem cartTotal in cart.cartItems){
+                total = total + cartTotal.finalTotal; 
+            }
+            Session["totalItem"] = total;
+            return Json(new { Message = "test", JsonRequestBehavior.AllowGet });
+        }
+
         public ActionResult Index()
         {
             ViewBag.banner = true;

@@ -1,0 +1,87 @@
+﻿
+@{
+    ViewBag.Title = "Cart";
+    Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    var cart = Session["cart"] as group19Web.DTO.Cart;
+    var quantity = 1;
+    if (cart != null)
+    {
+        quantity = cart.cartItems.Count;
+    }
+    decimal total = Convert.ToDecimal(Session["totalItem"]);
+    int count = Convert.ToInt32(Session["count"]);
+}
+<div class="full mb-4 mt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <div class="box-shadow bg-white p-2">
+                        <form action="/tbl_saleorder_products/UpdateCart" method="post">
+                            <input type="hidden"
+                                   id="_wpnonce"
+                                   name="_wpnonce"
+                                   value="5c7d0b0aba" /><input type="hidden"
+                                                               name="_wp_http_referer"
+                                                               value="/gio-hang/" />
+                            <div class="table-responsive">
+                                <table class="table-bordered table">
+                                    <tr>
+                                        <th>Sản phẩm</th>
+                                        <th>Số lượng</th>
+                                        <th style="text-align: right">Giá</th>
+                                        <th style="text-align: right">Thành tiền</th>
+                                    </tr>
+
+                                    @if (cart != null)
+                                    {
+                                        foreach (var item in cart.cartItems.ToList())
+                                        {
+                                            <tr>
+                                                @{
+                                                    var qty = "qty[" + item.productId + "]";
+                                                }
+                                                <td>@item.productName</td>
+                                                <td>
+                                                    <input type="text"
+                                                           min="1"
+                                                           name="@qty"
+                                                           value="@item.quantity"
+                                                           size="1" />
+                                                </td>
+                                                <td style="text-align: right">@item.priceUnit</td>
+
+                                                <td style="text-align: right">
+                                                    @item.finalTotal
+                                                    <span onclick="removeCartItemMenu(@item.productId, 'cart');"
+                                                          class="btn btn-danger btn-sm">
+                                                        <i class="fa fa-times"></i>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        }
+                                    }
+
+                                    <tr>
+                                        <td colspan="2"></td>
+                                        <td class="text-right"><strong>Tổng tiền</strong></td>
+                                        <td class="text-right">
+                                            <b class="main-color fs13">@total</b>
+                                        </td>
+                                    </tr>
+                                </table>
+                            </div>
+
+                            <p>
+                                <input type="submit"
+                                       value="Cập nhật"
+                                       class="btn btn-warning" />
+                                <a class="btn btn-danger" href="/thanh-toan">Thanh toán</a>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+

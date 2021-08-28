@@ -138,9 +138,13 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\tbl_categoryController.cs" />
     <Compile Include="Controllers\tbl_productController.cs" />
+    <Compile Include="Controllers\tbl_saleorder_productsController.cs" />
     <Compile Include="DAO\CategoryDAO.cs" />
+    <Compile Include="DAO\OrderDAO.cs" />
     <Compile Include="DAO\ProductDAO.cs" />
     <Compile Include="DAO\UserDAO.cs" />
+    <Compile Include="DTO\Cart.cs" />
+    <Compile Include="DTO\CartItem.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -623,8 +627,8 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\tbl_category\Details.cshtml" />
     <Content Include="Views\Shared\_LayoutMain.cshtml" />
-    <Content Include="Views\tbl_category\MainAdmin.cshtml" />
-    <Content Include="Views\tbl_category\TableAdmin.cshtml" />
+    <Content Include="Views\tbl_saleorder_products\MainAdmin.cshtml" />
+    <Content Include="Views\tbl_saleorder_products\TableAdmin.cshtml" />
     <Content Include="Views\tbl_category\CreateNew.cshtml" />
     <Content Include="Views\tbl_category\IndexCategory.cshtml" />
     <Content Include="Views\tbl_product\CreateNew.cshtml" />
@@ -655,6 +659,7 @@
     <Content Include="Views\Client\Login.cshtml" />
     <Content Include="Views\Client\Register.cshtml" />
     <Content Include="Views\Client\UserInfor.cshtml" />
+    <Content Include="Views\tbl_saleorder_products\Cart.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

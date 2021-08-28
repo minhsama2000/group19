@@ -24,7 +24,7 @@ namespace group19Web.Models
         [Column(TypeName = "datetime2")]
         public DateTime? updated_date { get; set; }
 
-        public int quality { get; set; }
+        public int quantity { get; set; }
 
         public int product_id { get; set; }
 

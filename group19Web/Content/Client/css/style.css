@@ -1280,9 +1280,8 @@ a#btn-bar-mobile {
     display: flex;
 }
 
-    .ul-login-register li {
-        border: 1px solid black;
-    }
+.ul-login-register li { border: 1px solid black;}
+
 
 
 

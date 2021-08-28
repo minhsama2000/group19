@@ -163,16 +163,6 @@ namespace group19Web.Controllers
             return RedirectToAction("IndexCategory");
         }
 
-        public ActionResult MainAdmin()
-        {
-            return View();
-        }
-
-        public ActionResult TableAdmin()
-        {
-            return View();
-        }
-
         // GET: tbl_category/Details/5
         public ActionResult Details(int? id)
         {

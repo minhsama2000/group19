@@ -2,6 +2,14 @@
 @{
     ViewBag.Title = "detail";
     Layout = "~/Views/Shared/_LayoutClient.cshtml";
+
+    var cart = Session["cart"] as group19Web.DTO.Cart;
+    var quantity = 1;
+    var qty = "qty" + ViewBag.productFind.id;
+    if (cart != null)
+    {
+        quantity = cart.cartItems.Count;
+    }
 }
 
 <style>
@@ -46,11 +54,12 @@
                         <div class="font18 w100 mb-2 text-left">Mô tả ngắn</div>
                         <div class="text-justify" style="line-height: 24px;">@ViewBag.productFind.short_description</div>
                         <div id="gia-cay" class="w100 mt-5 mb-3">
-                            <span class="gia-cay col-6 cl_red UTMHelvetIns font24 float-left">@ViewBag.productFind.price đ</span>
+                            <span class="gia-cay col-6 cl_red UTMHelvetIns font24 float-left" >@ViewBag.productFind.price đ</span>
+                            <input type="hidden" id="getPrice" value="@ViewBag.productFind.price" />
                             <div class="float-right col-6 ">
                                 <div class="input-group">
                                     <div class="input-group-prepend"><span class="input-group-text">Số lượng</span></div>
-                                    <input type="number" name="qty" id="qty13006" value="1" size="1" min="1" class="form-control">
+                                    <input type="number" name="qty" id="@qty" value="@quantity" size="1" min="1" class="form-control">
                                 </div>
                             </div>
                         </div>
@@ -60,7 +69,7 @@
                         </p>
 
                         <div class="d-flex justify-content-around single-cay-btn py-4">
-                            <button onclick="addCart(13006)" class="btn btn-success" id="btn-add-cart">
+                            <button onclick="addCart(@ViewBag.productFind.id)" class="btn btn-success" id="btn-add-cart">
                                 <i class="fa fa-shopping-cart cl_white"></i><span>CHO CÂY VÀO GIỎ</span>
                             </button>
                             <a class="btn btn-danger" href="/thanh-toan" rel="nofollow"><i class="fa fa-credit-card-alt"></i><span>THANH TOÁN</span></a>
