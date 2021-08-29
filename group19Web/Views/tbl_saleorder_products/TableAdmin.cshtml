@@ -81,26 +81,39 @@
                                                 @if (item.role.Equals("admin"))
                                                 {
                                                     <span class="role admin">@item.role</span>
-                }
-                else
-                {
-                                            <span class="role user">@item.role</span>
-                }
+                                                }
+                                                else if (item.role.Equals("user"))
+                                                {
+                                                    <span class="role user">@item.role</span>
+                                                }
+                                                else
+                                                {
+                                                    <span class="role admin">@item.role</span>
+                                                }
                                             </td>
                                             <td>
                                                 <div class="rs-select2--trans rs-select2--sm">
                                                     <select class="js-select2" name="role">
-                                                        <option selected="selected" value="fullcontrol">fullcontrol</option>
+                                                        <option selected="selected" value="@item.role">@item.role</option>
                                                         <option value="user">user</option>
                                                         <option value="admin">admin</option>
+                                                        <option value="fullcontrol">fullcontrol</option>
                                                     </select>
                                                     <div class="dropDownSelect2"></div>
                                                 </div>
                                             </td>
                                             <td>
-                                                <span class="more">
-                                                    <i class="zmdi zmdi-more"></i>
-                                                </span>
+                                                <div class="table-data-feature">
+                                                    <button class="item"
+                                                            data-toggle="modal"
+                                                            data-placement="top"
+                                                            data-target="#@item.id"
+                                                            title="chi tiết">
+                                                        <i class="zmdi zmdi-mail-send"></i>
+                                                    </button>
+
+
+                                                </div>
                                             </td>
                                         </tr>
                                     }
@@ -108,9 +121,7 @@
                                 </tbody>
                             </table>
                         </div>
-                        <div class="user-data__footer">
-                            <button type="submit" class="au-btn au-btn-load">Update</button>
-                        </div>
+                        
                     </div>
                     <!-- END USER DATA-->
                 </div>
@@ -122,3 +133,105 @@
     </div>
 </div>
 
+
+@foreach (var item in Model)
+{
+    <div id="@item.id" class="modal face" role="dialog">
+        <div class="modal-dialog modal-lg">
+            <form action="/tbl_saleorder_products/UpdateRole" method="post">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h3 class="">Information of product</h3>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <div class="card" style="width: 200px">
+                                    <img class="card-img-top img-thumbnail"
+                                         src="~/UploadFile/userImage/@item.avatar"
+                                         alt="Card image"
+                                         style="width: 100%" />
+                                    <div class="card-body">
+                                        <label>
+                                            Tên user
+                                            <h4 class="card-title">@item.fullname</h4>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8">
+                                <h5>User name:</h5>
+                                <input type="hidden" value="@item.id" name="id"/>
+                                <p class="mb-2 text-muted text-lowercase small">
+                                    @item.username
+                                </p>
+                                <div class="table-responsive">
+                                    <table class="table table-sm table-borderless mb-0">
+                                        <tbody>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Email:</strong>
+                                                </th>
+                                                <td>
+                                                    @item.email
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Địa chỉ</strong>
+                                                </th>
+                                                <td><textarea id="summernote">@item.address</textarea></td>
+                                            </tr>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Điện thoại</strong>
+                                                </th>
+                                                <td>@item.phone</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Role</strong>
+                                                </th>
+                                                <td>
+                                                    <div class="rs-select2--trans rs-select2--sm">
+                                                        <select class="js-select2" name="role">
+                                                            <option selected="selected" value="@item.role">@item.role</option>
+                                                            <option value="user">user</option>
+                                                            <option value="admin">admin</option>
+                                                            <option value="fullcontrol">fullcontrol</option>
+                                                        </select>
+                                                        <div class="dropDownSelect2"></div>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Ngày cập nhật</strong>
+                                                </th>
+                                                <td>@item.updated_date</td>
+                                            </tr>
+                                            <tr>
+                                                <th class="pl-0 w-25" scope="row">
+                                                    <strong>Ngày tạo</strong>
+                                                </th>
+                                                <td>@item.created_date</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="submit" class="btn btn-danger" >
+                            Update
+                        </button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+}

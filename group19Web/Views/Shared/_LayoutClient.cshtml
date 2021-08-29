@@ -282,7 +282,7 @@
                     <div class="col-4 col-sm-4 order-sm-2">
                         <div class="float-left font13 login-register">
 
-                            @if (user != null && user.role.Equals("admin"))
+                            @if (user != null && (user.role.Equals("admin") || user.role.Equals("fullcontrol") ) )
                             {
 
 

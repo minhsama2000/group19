@@ -166,6 +166,29 @@ namespace group19Web.Controllers
             return View();
         }
 
+        public ActionResult UpdateRole()
+        {
+            string role = Request["role"];
+            int id = Int32.Parse(Request["id"]);
+
+            tbl_user tbl_User = (tbl_user)Session["user"];
+
+            if (tbl_User.role.Equals("fullcontrol"))
+            {
+                tbl_user tbl_UserFind = db.tbl_user.Where(u => u.id == id).FirstOrDefault();
+                tbl_UserFind.role = role;
+                db.SaveChanges();
+            }
+            else
+            {
+                ViewBag.error = "bạn không có quyền";
+            }
+
+            
+
+            return RedirectToAction("TableAdmin");
+        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
